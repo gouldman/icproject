@@ -1,0 +1,121 @@
+#
+#  This routine will initialize 
+#    Cadence Encounter v13
+#    Cadence ETS v13
+#    Cadence RTL Compiler v12
+#    Synopsys v2013.12 Synthesis
+#    Synopsys PrimeTime v2013.12
+#    Mentor Graphics QuestaSim v10.0d
+#  for use with the STM065 v5.3.6. cell libraries.
+#    RISCV-Pulpino & RI5CY_GNU_TOOLCHAIN (ETH compiler)
+
+if [ $PWD = $HOME ]; then
+
+  echo ""
+  echo "Initialization will not be performed in the login directory!"
+  echo ""
+  echo "Use a subdirectory!"
+  echo ""
+
+elif [ $PWD:t = "soc" ]; then
+
+    echo ""
+    echo "Do not run setup in the 'soc' directory!"
+    echo ""
+
+else
+
+# Start defining the stuff.
+
+  export STM065_DIR=/usr/local-eit/cad2/cmpstm/stm065v536
+
+# Genus
+  export GENUS_DIR=/usr/local-eit/cad2/cadence/gen161
+  export PATH=$PATH:$GENUS_DIR/tools/bin
+
+
+# Initializing Encounter
+#  export SOCDIR=/usr/local-eit/cad2/cadence/edi14
+  export SOCDIR=/usr/local-eit/cad2/cadence/edi142
+  export ETSDIR=/usr/local-eit/cad2/cadence/ssv14
+  export RTLDIR=/usr/local-eit/cad2/cadence/rc14
+
+  export CDS_AUTO_64BIT=ALL
+ 
+  cdsPath=$SOCDIR/tools/bin
+  etsPath=$ETSDIR/tools/bin
+  rtlPath=$RTLDIR/tools/bin
+
+
+  if [ "`echo $path | grep $cdsPath`" = "" ]; then
+        export PATH=$etsPath:$cdsPath:$rtlPath:$PATH
+  fi
+
+# Copy the example files if they do not exist.
+  if [ ! -d soc ]; then
+    mkdir soc
+    cd soc
+    $STM065_DIR/build_socdir2
+    cd ..
+  fi
+
+# Initializing Synopsys
+  export SYNOPSYS=/usr/local-eit/cad2/synopsys/syn2021
+  export PTROOT=/usr/local-eit/cad2/synopsys/pt2021
+
+  SynPath=$SYNOPSYS/bin
+  PTPath=$PTROOT/bin
+
+  if [ "`echo $path | grep $SynPath`" = "" ]; then
+        export PATH=$SynPath:$PTPath:$PATH
+  fi
+
+  export SYNOPSYS_DESIGN_LIB=`pwd`
+
+#  if [ ! -e .synopsys_dc.setup ]; then
+#    cp $SYNOPSYS/dot.synopsys_dc.st65 .synopsys_dc.setup
+#  fi
+
+#  if [ ! -e .synopsys_pt.setup ]; then
+#    cp $PTROOT/dot.synopsys_pt.st65 .synopsys_pt.setup
+#  fi
+
+
+#  if [ ! -d vhdl ]; then
+#    mkdir vhdl
+#    gtar xzf $SYNOPSYS/medfilt_st65.tgz
+#  fi
+
+  test -d netlists || mkdir ./netlists
+  test -d WORK || mkdir ./WORK
+
+#  alias sold "$SYNOPSYS/sold"
+
+
+#Initializing RISCV-Pulpino Variables
+  export CC="riscv32-unknown-elf-gcc"
+  export PATH="/usr/local-eit/cad2/riscv/ri5cy_gnu_toolchain/install/bin:$PATH"
+
+# Initializing QuestaSim
+  export MODEL_SIM=/usr/local-eit/cad2/mentor/qsim10/questasim
+  export MODELSIM="$(pwd)"/modelsim_st65.ini
+
+  test -f medfilt.cmd || cp $MODEL_SIM/../medfilt.cmd.st65 ./medfilt.cmd
+
+  modelsimpath=$MODEL_SIM/linux_x86_64
+
+  if [ "`echo $path | grep $modelsimpath`" = "" ]; then
+        export PATH=$modelsimpath:$PATH
+  fi
+
+
+
+# Licenses
+  export SNPSLMD_LICENSE_FILE=`/bin/cat $SYNOPSYS/../current_license`
+  export CDS_LIC_FILE=`/bin/cat $SOCDIR/../current_license`
+  export MGLS_LICENSE_FILE=`/bin/cat $MODEL_SIM/../../current_license`
+
+
+fi
+
+

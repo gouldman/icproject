@@ -1,0 +1,2023 @@
+::rc_st::__eval_from_socket_beginator
+set lib_load_start [::legacy::get_attribute runtime /]
+set ::blt_library /usr/local-eit/cad2/cadence/gen161/tools/lib/blt8.0
+set ::histNum 1
+array set ::.rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name.shell.slistbox {counter 0 x,last 1.0 -anchor e x-last 1.0 vsbPadY 0 -highlightthickness 0 -sizebox 0 -scrollbar auto hsbPadX 0 lastScbW 14 -borderwidth 1 -browsecmd {tixComboBox:LbBrowse .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name} w:vsb .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name.shell.slistbox.vsb lastScbH 14 -highlightcolor black -command {tixComboBox:LbCommand .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name} x-first 0.0 -highlightbackground #c3c3c3 -background white w:root .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name.shell.slistbox w:hsb .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name.shell.slistbox.hsb w:listbox .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name.shell.slistbox.listbox y-first 0.0 -state normal lastSpec 00 className tixScrolledListBox ClassName TixScrolledListBox pw:client .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name.shell.slistbox.listbox lastMW 1 rootCmd ::.rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name.shell.slistbox:root lastMH 1 y,last 1.0 -options {listbox.selectMode "browse"} y-last 1.0 -takefocus 1 -cursor {} x,first 0.0 -relief flat y,first 0.0 -width 0 context tixScrolledListBox -scrollbarspace y repack 0 -height 0}
+set ::_phy_pcount 0
+set ::i 16
+array set ::tixLabelWidget {isWidget 1 staticOptions -labelside methods {} defaults {} options {
+	-label -labelside -padx -pady
+    } superClass tixPrimitive virtual 1 forceCall {} ClassName TixLabelWidget className tixLabelWidget}
+array set ::vrdv_toggle {}
+set ::m {(7 seconds elapsed)}
+array set ::_vrc_attr_cbox {}
+set ::t 7
+array set ::_phy_pdata_unconstrained {}
+set ::_vbrows_cmd {}
+set ::gui_layer_color_0 {#f4a460}
+set ::gui_layer_color_1 {#0000ff}
+set ::gui_layer_color_2 {#ff0000}
+set ::gui_layer_color_3 {#00d000}
+set ::gui_layer_color_4 {#d0d000}
+set ::gui_layer_color_5 {#a52a2a}
+set ::gui_layer_color_6 {#ffa500}
+set ::gui_layer_color_7 {#d000d0}
+set ::gui_layer_color_8 {#00d0d0}
+set ::gui_layer_color_9 {#a52a2a}
+set ::ratio_thresh_for_joining_small_buckets_var 100000
+set ::tk_strictMotif 0
+set ::ClkName_JTAG clk_jtag
+set ::PERIOD 40000
+set ::rdagTimingAnalyzer 0
+array set ::vrc_rm_table {}
+array set ::tixCheckList {isWidget 1 staticOptions {
+	-radio
+    } methods {
+	getselection getstatus setstatus
+    } defaults {
+	{.scrollbar			auto}
+	{.doubleClick			false}
+	{*Scrollbar.takeFocus           0}
+	{*borderWidth                   1}
+	{*hlist.background              #c3c3c3}
+	{*hlist.drawBranch              1}
+	{*hlist.height                  10}
+	{*hlist.highlightBackground      #d9d9d9}
+	{*hlist.indicator               1}
+	{*hlist.indent                  20}
+	{*hlist.itemType                imagetext}
+	{*hlist.padX                    3}
+	{*hlist.padY                    0}
+	{*hlist.relief                  sunken}
+	{*hlist.takeFocus               1}
+	{*hlist.wideSelection           0}
+	{*hlist.width                   20}
+    } options {
+	-radio
+    } superClass tixTree virtual 1 forceCall {} ClassName TixCheckList className tixCheckList}
+array set ::vrc_report_drv_table2_toggle {}
+set ::wingScaleOfZoom 3.0
+array set ::vrcSave {}
+array set ::.rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name {-disabledforeground #606060 -anchor e curIndex {} w:entry .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name.frame.entry -selection {} -highlightcolor black w:frame .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name.frame -state normal className tixComboBox w:slistbox .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name.shell.slistbox -selectmode browse entryfg black -prunehistory 1 -highlightthickness 0 state 0 -value {} -labelside left -borderwidth 0 -label {} -highlightbackground #c3c3c3 -fancy 0 -options {} -relief flat ignore 0 context tixComboBox -browsecmd {} w:arrow .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name.frame.arrow -command {vrc_hdl_load_file .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl} w:root .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name -tickbitmap @/usr/local-eit/cad2/cadence/gen161/etc/synth/tcltk/tix/bitmaps/tick.xbm -background #d9d9d9 w:listbox .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name.shell.slistbox.listbox -historylimit 10 ClassName TixComboBox rootCmd ::.rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name:root -padx 0 -takefocus 0 -pady 0 -cursor {} -crossbitmap @/usr/local-eit/cad2/cadence/gen161/etc/synth/tcltk/tix/bitmaps/cross.xbm -arrowbitmap @/usr/local-eit/cad2/cadence/gen161/etc/synth/tcltk/tix/bitmaps/cbxarrow.xbm -width 40 w:label .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name.label -listwidth {} -listcmd {} -disablecallback 0 w:shell .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name.shell -grab global -dropdown 1 -validatecmd {} -variable {} -height 0 -editable 0 -history 0}
+array set ::.rc.pane {workarea,forgotten 0 counter 0 -panerelief flat workarea,allowresize 1 -highlightthickness 0 -orientation vertical -handlebg #c80000 workarea,size 685 -borderwidth 0 -separatoractivebg red movePending 0 -highlightcolor black -command {} workarea,rsize 685 maxReqW 1 -highlightbackground #c3c3c3 -background #d9d9d9 w:root .rc.pane maxReqH 1 -dynamicgeometry 1 -handleactivebg #ececec totalsize 685 className tixPanedWindow ClassName TixPanedWindow -paneborderwidth 1 workarea,expand 1.0 nItems 1 rootCmd ::.rc.pane:root -options {} items workarea -takefocus 0 -cursor {} workarea,min 0 -relief flat w:workarea .rc.pane.workarea -width 0 context tixPanedWindow workarea,max 100000 repack 0 -height 0 -separatorbg gray25}
+set ::cwdLibName GB
+set ::gui_layer_name_0 1
+set ::gui_layer_name_1 1
+set ::gui_layer_name_2 1
+set ::gui_layer_name_3 1
+set ::vrdvPriv {}
+set ::gui_layer_name_4 1
+set ::gui_layer_name_5 1
+set ::gui_layer_name_6 1
+set ::gui_layer_name_7 1
+set ::gui_layer_name_8 1
+set ::gui_layer_name_9 1
+set ::_phy_x 0
+set ::_phy_y 0
+array set ::vrp_toggle {}
+set ::nspace qtfForm
+set ::_bfh 19
+set ::gui_layer_style_0 1
+set ::gui_layer_style_1 1
+set ::gui_layer_style_2 1
+set ::gui_layer_style_3 1
+set ::gui_layer_style_4 1
+set ::gui_layer_style_5 1
+set ::gui_layer_style_6 1
+set ::_bfw 16
+set ::gui_layer_style_7 1
+set ::gui_layer_style_8 1
+set ::gui_layer_style_9 1
+set ::_selection_count {}
+set ::factor_of_avg_for_bucket_moves_of_cells_var 1.0
+array set ::.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name.shell.slistbox {counter 0 x,last 1.0 -anchor w x-last 1.0 vsbPadY 0 -highlightthickness 0 -sizebox 0 -scrollbar auto hsbPadX 0 lastScbW 14 -borderwidth 1 -browsecmd {tixComboBox:LbBrowse .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name} w:vsb .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name.shell.slistbox.vsb lastScbH 14 -highlightcolor black -command {tixComboBox:LbCommand .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name} x-first 0.0 -highlightbackground #c3c3c3 -background white w:root .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name.shell.slistbox w:hsb .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name.shell.slistbox.hsb w:listbox .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name.shell.slistbox.listbox y-first 0.0 -state normal lastSpec 00 className tixScrolledListBox ClassName TixScrolledListBox pw:client .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name.shell.slistbox.listbox lastMW 1 rootCmd ::.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name.shell.slistbox:root lastMH 1 y,last 1.0 -options {listbox.selectMode "browse"} y-last 1.0 -takefocus 1 -cursor {} x,first 0.0 -relief flat y,first 0.0 -width 0 context tixScrolledListBox -scrollbarspace y repack 0 -height 0}
+set ::tix_release 8.4.3
+array set ::vrc_ra_table {}
+array set ::tix_priv {-schemepriority 20 -fontset WmDefault -debug 0 -binding TK -scheme WmDefault debug 0}
+set ::MAP_EFF high
+set ::_vrc_vbrows_id 0
+set ::_cdr {}
+array set ::vrc_trw_data {}
+array set ::tixDirSelectBox {isWidget 1 staticOptions {} methods {
+    } defaults {
+	{*combo*listbox.height 		5}
+	{*combo.label.anchor		w}
+	{*combo.labelSide		top}
+	{*combo.history			true}
+	{*combo.historyLimit		20}
+    } options {
+	-command -disablecallback -value
+    } superClass tixPrimitive virtual 1 forceCall {
+	-value -label
+    } ClassName TixDirSelectBox className tixDirSelectBox}
+set ::_attr_new_value {}
+set ::gui_layer_select_10 0
+set ::gui_layer_select_11 0
+set ::gui_layer_select_12 0
+set ::gui_layer_select_13 0
+set ::gui_layer_select_14 0
+set ::gui_layer_select_15 0
+set ::fileList /usr/local-eit/cad2/cadence/gen161/tools/lib/cdn/gui_tk/vresources
+array set ::tixDrop {TixHListSingle,<In> {tixHListSingle:Rec:DragIn %W %S %x %y} TixHListSingle,<Out> {tixHListSingle:Rec:DragOut %W %S %x %y} TixHListSingle,<Over> {tixHListSingle:Rec:DragOver %W %S %x %y} TixHListSingle,<Drop> {tixHListSingle:Rec:Drop %W %S %x %y} TixHListSingle 1}
+array set ::_vrc_attr_readonly {}
+set ::_vbgw_action {}
+array set ::tixPanedWindow {isWidget 1 staticOptions {
+	-orientation
+    } methods {
+	add delete forget manage panecget paneconfigure panes setsize
+    } defaults {} options {
+	-command -dynamicgeometry -handleactivebg -handlebg -orient
+	-orientation -panebd -paneborderwidth -panerelief
+	-separatoractivebg -separatorbg
+    } superClass tixPrimitive virtual 1 forceCall {} ClassName TixPanedWindow className tixPanedWindow}
+array set ::tmgbPriv {}
+array set ::dft_referenced_objects_original_dft_mapped_table {}
+set ::ClkRise_uncertainty 200
+array set ::tixDragDropContext {isWidget 0 staticOptions {} methods {
+	cget configure drag drop set startdrag
+    } defaults {} options {
+	-command -source
+    } superClass {} virtual 1 forceCall {} ClassName TixDragDropContext className tixDragDropContext}
+array set ::vmenus {file .rc.menubar.file.menu main,window .rc.menubar.window main,help .rc.menubar.help main,logo .rc.menubar.logo main .rc.menubar sch_pcld 0 main,file .rc.menubar.file main,timing .rc.menubar.timing main,tools .rc.menubar.tools sch_pcpd 0 main,power .rc.menubar.power main,dft .rc.menubar.dft main,fp .rc.menubar.fp}
+array set ::vrc_report_area_table {}
+set ::_sh 1200
+array set ::_td {}
+array set ::cpf_referenced_objects_original_preserve_table {}
+array set ::vrc_fontsel {}
+set ::_vbgw_var1 0
+set ::_vbgw_var2 0
+set ::_sw 1920
+array set ::tixStatusBar {isWidget 1 staticOptions {
+	-fields
+    } methods {
+    } defaults {} options {
+	-fields
+    } superClass tixPrimitive virtual 1 forceCall {} ClassName TixStatusBar className tixStatusBar}
+set ::_drv {}
+set ::_xp 0
+array set ::vrc_trw_ttable {}
+set ::rda_tcl_path /usr/local-eit/cad2/cadence/gen161/tools/lib/cdn/gui_qt/icons
+array set ::vrc_rdp_table {}
+set ::optLVTCells 2
+array set ::vrc_trw_tbar_data {}
+set ::_sgn_shift_key 0
+array set ::_vrc_attr_data {}
+array set ::vep_toggle {}
+array set ::tixPrimitive {isWidget 1 staticOptions {
+	-options
+    } methods {
+	cget configure subwidget subwidgets
+    } defaults {} options {
+	-background -borderwidth -cursor
+	-height -highlightbackground -highlightcolor -highlightthickness
+	-options -relief -takefocus -width -bd -bg
+    } superClass {} virtual 1 forceCall {} ClassName TixPrimitive className tixPrimitive}
+array set ::tixShell {isWidget 1 staticOptions {} methods {} defaults {} options {
+	-title
+    } superClass tixPrimitive virtual 1 forceCall {
+	-title
+    } ClassName TixShell className tixShell}
+array set ::vrc_report_dft_segment_elements_table {}
+set ::DESIGN top_top
+set ::cmd load_path_categories
+set ::_drv_transition_count 0
+array set ::vrcSch {}
+array set ::_phy_pdata {}
+array set ::vdft {}
+array set ::vrc_dpa_table {}
+set ::gui_layer_select_0 0
+set ::gui_layer_select_1 0
+set ::gui_layer_select_2 0
+set ::gui_layer_select_3 0
+set ::gui_layer_select_4 0
+set ::gui_layer_select_5 0
+set ::gui_layer_select_6 0
+set ::gui_layer_select_7 0
+set ::gui_layer_select_8 0
+set ::dir /usr/local-eit/cad2/cadence/gen161/tools/lib/cdn/halo/tcl
+set ::gui_layer_select_9 0
+array set ::tixSelect {isWidget 1 staticOptions {
+	-allowzero -orientation -padx -pady -radio
+    } methods {
+	add button invoke
+    } defaults {
+	{*frame.borderWidth			1}
+	{*frame.relief				sunken}
+	{*Button.borderWidth			2}
+	{*Button.highlightThickness		0}
+    } options {
+	-allowzero -buttontype -command -disablecallback -orientation
+	-orient -padx -pady -radio -selectedbg -state -validatecmd
+	-value -variable
+    } superClass tixLabelWidget virtual 1 forceCall {
+	-variable -state
+    } ClassName TixSelect className tixSelect}
+set ::opgNumOfVts 0
+set ::domain_name_arg {}
+set ::vrpdPriv {}
+array set ::dft_referenced_objects_original_preserve_table {}
+set ::id 20
+set ::OPT_EFF high
+array set ::tixComboBox {isWidget 1 staticOptions {
+	-dropdown -fancy
+    } methods {
+	addhistory align appendhistory flash invoke insert pick popdown
+    } defaults {
+	{*Entry.relief				sunken}
+	{*TixScrolledListBox.scrollbar		auto}
+	{*Listbox.exportSelection		false}
+	{*Listbox.takeFocus			false}
+	{*shell.borderWidth			2}
+	{*shell.relief				raised}
+	{*shell.cursor				arrow}
+	{*Button.anchor				c}
+	{*Button.borderWidth			1}
+	{*Button.highlightThickness		0}
+	{*Button.padX				0}
+	{*Button.padY				0}
+	{*tick.width				18}
+	{*tick.height				18}
+	{*cross.width				18}
+	{*cross.height				18}
+	{*arrow.anchor				c}
+	{*arrow.width				15}
+	{*arrow.height				18}
+    } options {
+	-anchor -arrowbitmap -browsecmd -command -crossbitmap
+	-disablecallback -disabledforeground -dropdown -editable
+	-fancy -grab -histlimit -historylimit -history -listcmd
+	-listwidth -prunehistory -selection -selectmode -state
+	-tickbitmap -validatecmd -value -variable
+    } superClass tixLabelWidget virtual 1 forceCall {
+	-variable -selectmode -state
+    } ClassName TixComboBox className tixComboBox}
+array set ::vrc_slack {}
+set ::_vbgw_bt 2
+array set ::vrc_rpr_table {}
+set ::_vbgw_bx 0
+set ::_vbgw_by 0
+array set ::ns {compat ::aeware utils ::aeware::utils time_info ::aeware applet ::aeware::applet}
+array set ::vrc_report_library_domain_table {}
+set ::factor_of_avg_for_bucket_moves_of_adders_var 1.5
+set ::move_all_adders_by_one_level_var false
+set ::vrdsePriv {}
+set ::vrdsPriv {}
+set ::tcl_level 16.1.13
+set ::result {}
+array set ::tixBalloon {defaults {
+	{*background 			#ffff60}
+	{*foreground 			black}
+	{*borderWidth 			0}
+	{.borderWidth 			1}
+	{.background 			black}
+	{*Label.anchor			w}
+	{*Label.justify			left}
+    } bals {} g_ignore,Menu {} forceCall {} options {
+	-installcolormap -initwait -state -statusbar -cursor
+    } staticOptions {} superClass tixShell virtual 1 g_ignore,Menubutton {} className tixBalloon ClassName TixBalloon isWidget 1 g_ignore,TixComboBox {} methods {
+	bind post unbind
+    }}
+set ::vrc_report_drv_table3_priv {}
+set ::OutputDelay 500
+array set ::vfrc {}
+array set ::tixStdDialogShell {isWidget 1 staticOptions {} methods {} defaults {} options {
+	-cached
+    } superClass tixDialogShell virtual 1 forceCall {} ClassName TixStdDialogShell className tixStdDialogShell}
+array set ::vrc_trw_tbar_info {}
+array set ::tixOptionMenu {isWidget 1 staticOptions {} methods {
+	add delete disable enable entrycget entryconfigure entries
+    } defaults {
+	{.highlightThickness			0}
+	{.takeFocus				0}
+	{.frame.menubutton.relief		raised}
+	{.frame.menubutton.borderWidth		2}
+	{.frame.menubutton.anchor		w}
+	{.frame.menubutton.highlightThickness	2}
+	{.frame.menubutton.takeFocus		1}
+    } options {
+	-command -disablecallback -dynamicgeometry -value -variable
+	-validatecmd -state
+    } superClass tixLabelWidget virtual 1 forceCall {
+	-variable -state
+    } ClassName TixOptionMenu className tixOptionMenu}
+array set ::vrc_progress {}
+set ::rc_mode true
+set ::ratio_diff_for_joining_small_buckets_var 0.2
+array set ::vrc_rp_table {}
+set ::optHVTCells 0
+set ::SYNT_REPORT .//reports
+set ::_power 0
+array set ::_phy_pdata_slack_values {}
+array set ::vbgw_progress {}
+array set ::.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name {-disabledforeground #606060 -anchor w curIndex {} w:entry .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name.frame.entry -selection {} -highlightcolor black w:frame .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name.frame -state normal className tixComboBox w:slistbox .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name.shell.slistbox -selectmode browse entryfg black -prunehistory 1 -highlightthickness 0 state 0 -value {} -labelside left -borderwidth 0 -label {} -highlightbackground #c3c3c3 -fancy 0 -options {
+      listbox.height 4
+  } -relief flat ignore 0 context tixComboBox -browsecmd {} w:arrow .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name.frame.arrow -command {vrc_sgn_load_from_history .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic} w:root .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name -tickbitmap @/usr/local-eit/cad2/cadence/gen161/etc/synth/tcltk/tix/bitmaps/tick.xbm -background #d9d9d9 w:listbox .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name.shell.slistbox.listbox -historylimit 10 ClassName TixComboBox rootCmd ::.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name:root -padx 0 -takefocus 0 -pady 0 -cursor {} -crossbitmap @/usr/local-eit/cad2/cadence/gen161/etc/synth/tcltk/tix/bitmaps/cross.xbm -arrowbitmap @/usr/local-eit/cad2/cadence/gen161/etc/synth/tcltk/tix/bitmaps/cbxarrow.xbm -width 0 w:label .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name.label -listwidth {} -listcmd {} -disablecallback 0 w:shell .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name.shell -grab global -dropdown 1 -validatecmd {} -variable {} -height 0 -editable 0 -history 0}
+set ::use_stack_trace_for_mt 1
+set ::PERIOD_JTAG 100000
+array set ::vrc_report_gates_table {}
+array set ::.rc.pane.workarea.fr.pane.viewer.fr.nb {counter 0 physical,createcmd {} -highlightthickness 0 w:schematic .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic minW 141 -borderwidth 0 w:nbframe .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe minH 32 pad-y1 33 -highlightcolor black schematic,raisecmd vrc_sch_raise_viewer pad-y2 2 -highlightbackground #c3c3c3 w:root .rc.pane.workarea.fr.pane.viewer.fr.nb -background #d9d9d9 -dynamicgeometry 0 topchild schematic className tixNoteBook ClassName TixNoteBook rootCmd ::.rc.pane.workarea.fr.pane.viewer.fr.nb:root physical,raisecmd vrc_phy_raise_viewer nWindows 2 -options {} -takefocus 0 windows {schematic physical} pad-x1 2 -ipadx 0 -cursor {} w:top .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe pad-x2 2 -relief flat -ipady 0 schematic,createcmd {} -width 0 context tixNoteBook w:physical .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical repack 0 -height 0}
+set ::utility_proc ::_proc_arg_parser_::_check_return_is_valid
+array set ::vrc_trw_toggle {}
+set ::use_joining_for_small_buckets_var true
+array set ::vra_toggle {}
+array set ::vrdse_toggle {}
+array set ::tixFileSelectDialog {isWidget 1 staticOptions {} methods {
+    } defaults {} options {
+	-command
+    } superClass tixStdDialogShell virtual 1 forceCall {} ClassName TixFileSelectDialog className tixFileSelectDialog}
+set ::tix_version 8.4
+array set ::vrc_rd_table {}
+array set ::vbgTcolor {}
+array set ::vrc_report_drv_table1_toggle {}
+set ::ROOT ./
+array set ::tixMeter {isWidget 1 staticOptions {} methods {
+    } defaults {
+	{.relief		sunken}
+	{.borderWidth		2}
+	{.width			150}
+    } options {
+	-foreground -text -value
+    } superClass tixPrimitive virtual 1 forceCall {} ClassName TixMeter className tixMeter}
+array set ::.rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.text {counter 0 x,last 1.0 vsbPadY 0 -highlightthickness 0 -scrollbar both -sizebox 0 hsbPadX 0 lastScbW 14 -borderwidth 0 w:vsb .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.text.vsb lastScbH 14 -highlightcolor black -highlightbackground #c3c3c3 w:root .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.text -background gray94 w:hsb .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.text.hsb lastSpec 11 className tixScrolledText ClassName TixScrolledText pw:client .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.text.text lastMW 1 rootCmd ::.rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.text:root lastMH 1 y,last 0.07142857142857142 -options {} -takefocus 0 -cursor {} x,first 0.0 -relief flat y,first 0.0 -width 0 context tixScrolledText -scrollbarspace both w:text .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.text.text repack 0 -height 0}
+set ::ClkDomain top_top
+set ::tcl_prompt2_fmt {==>\ }
+array set ::tixScrolledHList {isWidget 1 staticOptions {} methods {
+    } defaults {
+	{.scrollbar			auto}
+	{*f1.borderWidth		1}
+	{*hlist.Background		#c3c3c3}
+	{*hlist.highlightBackground	#d9d9d9}
+	{*hlist.relief			sunken}
+	{*hlist.takeFocus		1}
+	{*Scrollbar.takeFocus		0}
+    } options {
+	 -highlightbackground -highlightcolor -highlightthickness
+    } superClass tixScrolledWidget virtual 1 forceCall {
+	-highlightbackground -highlightcolor -highlightthickness
+    } ClassName TixScrolledHList className tixScrolledHList}
+set ::ClkLatency 500
+set ::SYN_EFF high
+set ::wingPercentageOfPan 30
+array set ::_vrc_attr_hidden {}
+array set ::vrc_report_dftv_table {}
+array set ::_phy_tpath_table_data {}
+set ::blt_patchLevel 8.0p2-unoff
+array set ::tixListNoteBook {isWidget 1 staticOptions {} methods {
+    } defaults {
+	{*Orientation		horizontal}
+    } options {
+	-height -width
+    } superClass tixVStack virtual 1 forceCall {
+	-dynamicgeometry -width -height
+    } ClassName TixListNoteBook className tixListNoteBook}
+set ::DESIGN_FILES_V {  dc_full_detector.v dc_synchronizer.v dc_data_buffer.v  dc_token_ring_fifo_din.v  dc_token_ring_fifo_dout.v  dc_token_ring.v  
+   adbg_tap_top.v adbg_crc32.v bytefifo.v syncflop.v syncreg.v  }
+set ::vtPartition_exponent_var 1.0
+set ::gui_layer_color_10 {#ffff00}
+set ::rcprompt1 {legacy_genus:/> }
+set ::gui_layer_color_11 {#008000}
+set ::rcprompt2 {==> }
+set ::gui_layer_color_12 {#ff00ff}
+set ::gui_layer_color_13 {#ffc0cb}
+set ::gui_layer_color_14 {#00ffff}
+set ::gui_layer_color_15 {#800080}
+array set ::vrdc_toggle {}
+set ::_selection {}
+set ::fileDir /usr/local-eit/cad2/cadence/gen161/tools/lib/cdn/gui_tk
+array set ::vrc_rds_table {}
+set ::_vrc_power_net_table_wid {}
+set ::write_vlog_undo_bus_net_blasting 0
+set ::ClkName in_clk
+array set ::_rtopts {}
+array set ::vrc_fonts_labels {f_balloon Balloon f_label {Label frame} f_dialog {Dialog box} f_hlist {List widgets} f_status {Status bar} f_text Text}
+set ::_phys_pdata_unconstrained_update 0
+array set ::vrc_report_dparea_table {}
+array set ::vrc_report_datapath_table {}
+set ::new tixScrolledListBox
+set ::move_also_buffers_or_inverters_in_bucketing_var false
+array set ::tixDirSelectDialog {isWidget 1 staticOptions {} methods {} defaults {
+	{*ok.text		"OK"}
+	{*ok.underline		0}
+	{*ok.width		6}
+	{*cancel.text		"Cancel"}
+	{*cancel.underline	0}
+	{*cancel.width		6}
+	{*dirbox.borderWidth	1}
+	{*dirbox.relief		raised}
+    } options {
+	-command
+    } superClass tixDialogShell virtual 1 forceCall {} ClassName TixDirSelectDialog className tixDirSelectDialog}
+array set ::tkPriv {screen :0.0 focus {} inMenubutton {} activeMenu {} textanchoruid 0 menuBar {} activeItem {} dragging 0 popup {} pressX 0 pressY 0 postedMb {} prevPos {} buttons 0 window {} listboxPrev {} oldGrab {} mouseMoved 0 buttonWindow {} grab {} selectMode char initPos {} tearoff 1 afterId {}}
+array set ::_vrc_power_inst_table {}
+set ::gui_layer_visible_0 1
+set ::gui_layer_visible_1 1
+set ::_drv_capacitance {}
+set ::gui_layer_visible_2 1
+set ::msg {}
+set ::gui_layer_visible_3 1
+array set ::_vrc_attr_vdir {}
+set ::gui_layer_visible_4 1
+set ::gui_layer_visible_5 1
+set ::gui_layer_visible_6 1
+set ::gui_layer_visible_7 1
+set ::gui_layer_visible_8 1
+set ::gui_layer_visible_9 1
+array set ::_pcanvas {}
+array set ::_phy_edit_action {}
+array set ::tixMega {any,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name.shell.slistbox.listbox .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name.shell.slistbox TixComboBox,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name.label .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name TixComboBox,.rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name.shell.slistbox .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name TixComboBox,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name.frame .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name TixComboBox,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name.frame.entry .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name TixComboBox,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name.frame.arrow .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name TixComboBox,.rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name.label .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name TixComboBox,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name.shell.slistbox .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name TixComboBox,.rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name.shell.slistbox.listbox .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name TixComboBox,.rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name.frame .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name any,.rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name.shell.slistbox.listbox .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name.shell.slistbox TixComboBox,.rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name.frame.entry .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name TixComboBox,.rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name.frame.arrow .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name TixComboBox,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name.shell.slistbox.listbox .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name}
+array set ::phyPriv {world,ys 0 .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.fr.canvas,threshold 10 .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.fr.canvas,fpobject,ys 0 .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.fr.canvas,fpobject 0 .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.fr.canvas,selectRegion,ye 0 world,ye 0 .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.fr.canvas,fpobject,ye 0 .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.fr.canvas,editBox 0 .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.fr.canvas,editBox,ys 0 .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.fr.canvas,s-bp-1 0 .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.fr.canvas,x 0 .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.fr.canvas,y 0 .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.fr.canvas,editBox,ye 0 .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.fr.canvas,c-br-1 0 world,vys 0 routing_blockage_index 0 .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.fr.canvas,selectRegion,xs 0 world,xs 0 placement_blockage_index 0 fp_create_object {} .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.fr.canvas,fpobject,xs 0 .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.fr.canvas,selectRegion 0 world,mouseMoved 0 world,vye 0 fence_index 0 .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.fr.canvas,selectRegion,xe 0 world,xe 0 world,mode 0 .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.fr.canvas,fpobject,xe 0 .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.fr.canvas,editBox,xs 0 world,margin 10 region_index 0 .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.fr.canvas,editBox,xe 0 world,vxs 0 world,svx 0 guide_index 0 .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.fr.canvas,bx 0 world,svy 0 .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.fr.canvas,by 0 world,vxe 0 .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.fr.canvas,wheel_scale 8 .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.fr.canvas,haveFocus 0 .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.fr.canvas,mouseMoved 0 .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.fr.canvas,selectRegion,ys 0}
+set ::vrdPriv {}
+set ::_vrc_attr_id 0
+set ::vrc_report_drv_table1_priv {}
+set ::old tixScrolledListbox
+set ::nvs 1
+array set ::vrc_gates {}
+set ::_drv_capacitance_count 0
+array set ::vrc_rdc_table {}
+set ::opt -bg
+set ::vrdpPriv {}
+set ::tk_version 8.5
+array set ::_vrc_attr_option {}
+array set ::tixDirTree {isWidget 1 staticOptions {} methods {
+	activate chdir refresh
+    } defaults {
+	{.scrollbar			auto}
+	{*Scrollbar.takeFocus           0}
+	{*borderWidth                   1}
+	{*hlist.indicator               1}
+	{*hlist.background              #c3c3c3}
+	{*hlist.drawBranch              1}
+	{*hlist.height                  10}
+	{*hlist.highlightBackground     #d9d9d9}
+	{*hlist.indent                  20}
+	{*hlist.itemType                imagetext}
+	{*hlist.padX                    3}
+	{*hlist.padY                    0}
+	{*hlist.relief                  sunken}
+	{*hlist.takeFocus               1}
+	{*hlist.wideSelection           0}
+	{*hlist.width                   20}
+    } options {
+	-browsecmd -command -directory -disablecallback -showhidden -value
+    } superClass tixVTree virtual 1 forceCall {} ClassName TixDirTree className tixDirTree}
+array set ::vrd_toggle {}
+array set ::vwPriv {}
+set ::file tdgQtCurve
+array set ::tixExFileSelectBox {isWidget 1 staticOptions {} methods {
+	filter invoke
+    } defaults {
+	{*dir.label 			{Directories:}}
+	{*dir.editable 			true}
+	{*dir.history 			true}
+	{*dir*listbox.height 		5}
+	{*file.label  			Files:}
+	{*file.editable 		true}
+	{*file.history 			false}
+	{*file*listbox.height 		5}
+	{*types.label 			{List Files of Type:}}
+	{*types*listbox.height 		3}
+	{*TixComboBox.labelSide 	top}
+	{*TixComboBox*Label.anchor 	w}
+	{*dir.label.underline 		0}
+	{*file.label.underline		0}
+	{*types.label.underline 	14}
+	{*TixComboBox.anchor 		e}
+	{*TixHList.height 		7}
+	{*filelist*listbox.height 	7}
+	{*hidden.wrapLength 		3c}
+	{*hidden.justify 		left}
+    } options {
+	-browsecmd -command -dialog -dir -dircmd -directory 
+	-disablecallback -filetypes -pattern -selection -showhidden -value
+    } superClass tixPrimitive virtual 1 forceCall {
+	-filetypes
+    } ClassName TixExFileSelectBox className tixExFileSelectBox}
+array set ::tixFileComboBox {isWidget 1 staticOptions {} methods {
+	invoke
+    } defaults {
+    } options {
+	-command -defaultfile -directory -text
+    } superClass tixPrimitive virtual 1 forceCall {
+	-directory
+    } ClassName TixFileComboBox className tixFileComboBox}
+set ::_vrc_novus_gui 1
+array set ::.rc.pane.workarea.fr.pane.browser.fr.nb.nb {counter 0 -highlightthickness 0 minW 123 -borderwidth 0 hdl,createcmd {} hdl,raisecmd {} w:logical .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.logical w:nbframe .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe minH 32 pad-y1 33 -highlightcolor black pad-y2 2 -highlightbackground #c3c3c3 w:root .rc.pane.workarea.fr.pane.browser.fr.nb.nb -background #d9d9d9 -dynamicgeometry 0 logical,raisecmd {} topchild logical className tixNoteBook ClassName TixNoteBook rootCmd ::.rc.pane.workarea.fr.pane.browser.fr.nb.nb:root w:hdl .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl nWindows 2 -options {} -takefocus 0 windows {logical hdl} pad-x1 2 -ipadx 0 -cursor {} w:top .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe pad-x2 2 -relief flat -ipady 0 -width 0 context tixNoteBook repack 0 -height 0 logical,createcmd {}}
+set ::_phy_edit_mode 0
+set ::ClkSlew 500
+array set ::tixResizeHandle {isWidget 1 staticOptions {} methods {
+	attachwidget detachwidget hide show
+    } defaults {} options {
+	-command -cursorfg -cursorbg -handlesize -hintcolor -hintwidth -x -y
+    } superClass tixVResize virtual 1 forceCall {} ClassName TixResizeHandle className tixResizeHandle}
+array set ::vrc_report_dft_elements_table {}
+set ::_vrc_dft_fanin 0
+set ::qtfgDebug 0
+array set ::vrc_rdse_table {}
+set ::DESIGN_FILES_SV {  axi2apb32.sv AXI_2_APB_32.sv axi2apb.sv AXI_2_APB.sv  axi_mem_if_DP_hybr.sv axi_mem_if_DP.sv  axi_mem_if_MP_Hybrid_multi_bank.sv axi_mem_if_multi_bank.sv  axi_mem_if_SP.sv axi_read_only_ctrl.sv axi_write_only_ctrl.sv  apb_regs_top.sv axi_address_decoder_AR.sv axi_address_decoder_AW.sv  axi_address_decoder_BR.sv axi_address_decoder_BW.sv  axi_address_decoder_DW.sv axi_AR_allocator.sv axi_ArbitrationTree.sv  axi_AW_allocator.sv axi_BR_allocator.sv axi_BW_allocator.sv  axi_DW_allocator.sv axi_FanInPrimitive_Req.sv axi_multiplexer.sv  axi_node.sv axi_node_wrap.sv axi_node_wrap_with_slices.sv  axi_regs_top.sv axi_request_block.sv axi_response_block.sv  axi_RR_Flag_Req.sv axi_ar_buffer.sv axi_aw_buffer.sv axi_b_buffer.sv  axi_buffer.sv axi_r_buffer.sv axi_slice.sv axi_w_buffer.sv  axi_slice_dc_master.sv axi_slice_dc_slave.sv  axi_spi_master.sv spi_master_axi_if.sv spi_master_clkgen.sv  spi_master_controller.sv spi_master_fifo.sv spi_master_rx.sv  spi_master_tx.sv axi_spi_slave.sv spi_slave_axi_plug.sv  spi_slave_cmd_parser.sv spi_slave_controller.sv spi_slave_dc_fifo.sv  spi_slave_regs.sv spi_slave_rx.sv spi_slave_syncro.sv spi_slave_tx.sv   core2axi.sv  apb2per.sv apb_event_unit.sv generic_service_unit.sv sleep_unit.sv  apb_node.sv apb_node_wrap.sv apb_pulpino.sv apb_timer.sv timer.sv  apb_uart.sv apb_uart_sv.sv io_generic_fifo.sv uart_interrupt.sv uart_rx.sv uart_tx.sv  adbg_axi_biu.sv adbg_axi_module.sv adbg_axionly_top.sv adbg_lint_biu.sv  adbg_lint_module.sv adbg_lintonly_top.sv adbg_or1k_biu.sv  adbg_or1k_module.sv adbg_or1k_status_reg.sv adbg_top.sv adv_dbg_if.sv  riscv_defines.sv apu_core_package.sv  riscv_alu_basic.sv riscv_alu_div.sv riscv_alu.sv  riscv_apu_disp.sv riscv_compressed_decoder.sv  riscv_cs_registers.sv riscv_debug_unit.sv  riscv_decoder.sv riscv_ex_stage.sv riscv_fetch_fifo.sv  riscv_hwloop_controller.sv riscv_hwloop_regs.sv riscv_id_stage.sv  riscv_if_stage.sv riscv_int_controller.sv riscv_L0_buffer.sv  riscv_load_store_unit.sv riscv_mult.sv riscv_prefetch_buffer.sv  riscv_prefetch_L0_buffer.sv riscv_register_file_latch.sv  riscv_register_file.sv  riscv_controller.sv riscv_core.sv axi2apb_wrap.sv  apb_bus.sv  apb_mock_uart.sv  apu_defines.sv  axi2apb_wrap.sv  axi_bus.sv  axi_mem_if_SP_wrap.sv  axi_node_intf_wrap.sv  axi_slice_wrap.sv  axi_spi_slave_wrap.sv  boot_code.sv  boot_rom_wrap.sv  clk_rst_gen.sv  cluster_clock_gating.sv  cluster_clock_inverter.sv  cluster_clock_mux2.sv  config.sv  core2axi_wrap.sv  core_region.sv  debug_bus.sv  dp_ram.sv  dp_ram_wrap.sv  generic_fifo.sv  instr_ram_wrap.sv  periph_bus_wrap.sv  peripherals.sv  pulp_clock_gating.sv  pulp_clock_inverter.sv  pulp_clock_mux2.sv  ram_mux.sv  
+	rstgen.sv  sp_ram_ip.sv  four_sram_wrapper.sv  sp_ram_wrap.sv  pulpino_top.sv  top_top.sv }
+set ::DESIGN_FILES_VHDL {  apb_uart.vhd slib_clock_div.vhd slib_counter.vhd slib_edge_detect.vhd  slib_fifo.vhd slib_input_filter.vhd slib_input_sync.vhd  slib_mv_filter.vhd uart_baudgen.vhd uart_interrupt.vhd  uart_receiver.vhd uart_transmitter.vhd  }
+set ::PERIOD_SPI 100000
+set ::tdg /usr/local-eit/cad2/cadence/gen161/tools/lib/cdn/gui_qt/tdg
+array set ::vrc_rs_table {}
+array set ::tixControl {isWidget 1 staticOptions {} methods {
+	incr decr invoke update
+    } defaults {
+	{.borderWidth 			0}
+	{*entry.relief			sunken}
+	{*entry.width			5}
+	{*label.anchor			e}
+	{*label.borderWidth		0}
+	{*Button.anchor			c}
+	{*Button.borderWidth		2}
+	{*Button.highlightThickness	1}
+	{*Button.takeFocus		0}
+    } options {
+	-allowempty -autorepeat -command -decrcmd -disablecallback
+	-disabledforeground -incrcmd -initwait -integer -llimit
+	-repeatrate -max -min -selectmode -step -state -validatecmd
+	-value -variable -ulimit
+    } superClass tixLabelWidget virtual 1 forceCall {
+	-variable -state
+    } ClassName TixControl className tixControl}
+array set ::vrc_tch {id -1}
+array set ::tixLabelFrame {isWidget 1 staticOptions {} methods {
+	frame
+    } defaults {
+	{*Label.anchor          c}
+	{.frame.borderWidth	2}
+	{.frame.relief		groove}
+	{.border.borderWidth	2}
+	{.border.relief		groove}
+	{.borderWidth 	 	2}
+	{.padX 		 	2}
+	{.padY 		 	2}
+	{.anchor 	 	sw}
+    } options {} superClass tixLabelWidget virtual 1 forceCall {} ClassName TixLabelFrame className tixLabelFrame}
+array set ::vGlobal {phy_layer,color,4 #d0d000 phy_cmap_label 0 phy_blockage_placement_derived_color #7826a1 phy_blockage_placement_name 0 phy_macro_type_display_place_buf 512 f_status {-size 10 -family helvetica} phy_layer,color,5 #a52a2a phy_cmap_style 2 phy_macro_type_select_phys_buf 256 phy_macro_select 0 13,trw_tbar_pin_load 0 8,trw_tbar_wire_cap 0 phy_layer,color,6 #ffa500 logical_phys_threshold 10 15,trw_show_bar 0 phy_layer,color,7 #d000d0 phy_blackbox_display 0 f_balloon {-size 10 -family courier} phy_layer,color,8 #00d0d0 phy_guide_color #f3b2e3 phy_layer,color,9 #a52a2a phy_blockage_placement_display 1 lib_def_ext *.lib phy_port_style 1 18,trw_tbar_wire_len 0 phy_hier_pin_name 0 Linux,xwd /usr/bin/X11/xwd phy_layer,style,10 1 4,trw_air_bot_zoom 0 trw_air_bot_zoom 0 phy_layer,style,11 1 14,trw_air_bot_zoom 0 phy_layer,style,12 1 phy_blockage_placement_derived_select 0 phy_macro_type_color_place_buf white 8,trw_air_top_zoom 0 f_text {-size 10 -family helvetica} phy_layer,style,13 1 18,trw_air_top_zoom 0 18,trw_tbar_wire_cap 0 5,trw_show_sch 0 phy_layer,style,14 1 phy_layer,visible,0 1 phy_region_select 0 phy_fpobject_color #d66922 phy_layer,style,15 1 phy_layer,visible,1 1 phy_egcell_name 0 phy_blackbox_color #d66922 phy_macro_type_color_latch blue vdir_browser_d1 vdir phy_layer,visible,2 1 sch_print_orientation auto 8,trw_tbar_pin_load 0 phy_layer,visible,3 1 Linux,pnmtopng /usr/bin/pnmtopng phy_layer,visible,4 1 phy_pcell_select 0 phy_blockage_routing_name 0 restore_geometry 1 logical_threshold 50 19,trw_show_sch 0 14,trw_tbar_pin_fanout 0 phy_layer,visible,5 1 phy_layer,visible,6 1 phy_layer,visible,7 1 phy_layer,visible,8 1 phy_layer,visible,9 1 help,use_netscape 0 phy,color_count 0 0,trw_show_bar 0 phy_layer,color,10 #ffff00 sch_pinattrmax 20 3,trw_tbar_pin_fanout 0 phy_layer,color,11 #008000 18,trw_tbar_pin_load 0 2,trw_tbar_wire_len 0 phy_layer,color,12 #ff00ff phy_gcell_name 0 sch_balloon_cap 0 phy_macro_cover_select 1 phy_layer,color,13 #ffc0cb phy_layer,color,14 #00ffff 14,trw_show_bar 0 6,trw_air_bot_zoom 0 phy_layer,color,15 #800080 16,trw_air_bot_zoom 0 phy_blockage_placement_soft_name 0 phy_macro_type_select_macro 128 phy_hier_pin_display 0 2,trw_tbar_wire_cap 0 phy_egcell_style 0 phy_macro_type_name_mux 64 phy_macro_generic_select 1 wrap,lint none phy_layer,name,0 1 phy_macro_cover_color #ffaa00 SunOS,xwd /usr/openwin/bin/xwd phy_layer,name,1 1 12,trw_tbar_wire_len 0 phy_layer,name,2 1 phy,pan_default 0.75 phy_layer,name,3 1 number_separator none sch_display_instname 0 4,trw_show_sch 0 trw_show_sch 0 phy_layer,name,4 1 phy_umap_label 1 phy_fit die 7,trw_show_info 1 phy_layer,name,5 1 phy_umap_style 2 phy_macro_type_name_place_buf 512 dialog,save 0 phy_layer,name,6 1 12,trw_tbar_wire_cap 0 phy_layer,name,7 1 trw,id 0 phy_layer,name,8 1 io_def_ext *.io 18,trw_show_sch 0 phy_layer,name,9 1 phy_cluster_display 0 jpg_def_ext *.jpg 2,trw_tbar_pin_load 0 ps_def_ext *.ps 15,trw_show_info 1 phy_bump_color #e1bc71 sch_display_cellname 1 sch_print_sheetname A 8,trw_air_bot_zoom 0 7,trw_tbar_wire_len 0 xbrows,hlist_sep ~ 18,trw_air_bot_zoom 0 phy_guide_select 0 ctree,path_type {} 2,trw_show_info 1 phy_gcell_select 0 phy_blackbox_name 1 wrap,hdl none vdir_browser_ls_a 1 all_def_ext *.* phy_fence_select 0 vdir_browser_ls_c 0 phy_macro_cover_name 0 15,trw_tbar_pin_fanout 0 13,trw_show_bar 0 12,trw_tbar_pin_load 0 7,trw_tbar_wire_cap 0 phy_egcell_display 0 vdir_browser_ls_d 0 phy_cluster_style 0 logical,hlist_sep + sch_display_pinname 1 phy_macro_type_name_other 2 gif_def_ext *.gif 17,trw_tbar_wire_len 0 10,trw_show_info 1 1,trw_air_steiner 1 4,trw_tbar_pin_fanout 0 trw_tbar_pin_fanout 0 phy_row_select 0 phy_blockage_placement_derived_display 1 phy_blockage_routing_style 1 logical_show_power_percent 0 3,trw_air_steiner 1 3,trw_show_sch 0 vdir_browser_ls_l 0 phy_macro_fixed_name 0 17,trw_tbar_wire_cap 0 5,trw_air_steiner 1 Linux,pnmtojpg /usr/bin/pnmtojpeg 7,trw_air_steiner 1 phy_power_domain_name 0 phy_macro_type_display_buf 4 7,trw_tbar_pin_load 0 phy_gcell_color #ffff00 tc_def_ext {*.tc *.tcf} 17,trw_show_sch 0 9,trw_air_steiner 1 phy_row_color #4b4b4b sch_regenerate_sheetname None phy_cmap_basis 1 phy_blockage_placement_derived_style 1 phy_macro_type_select_flop 16 path_set,limit 3 phy_macro_type_display_inv 8 17,trw_tbar_pin_load 0 9,trw_show_bar 0 1,trw_tbar_wire_len 0 phy_guide_style 0 phy_layer,name,10 1 12,trw_show_bar 0 phy_layer,name,11 1 phy_layer,name,12 1 phy_region_display 1 sch_closeenough 15 phy_layer,name,13 1 ttk::scrollbar 1 1,trw_air_top_zoom 0 1,trw_tbar_wire_cap 0 phy_region_boxes_polygon 1 phy_layer,name,14 1 ctree,path_append 0 11,trw_air_top_zoom 0 phy_layer,name,15 1 focus_mode 0 phy_fpobject_style 0 phy_macro_type_select_latch 32 phy_blackbox_style 0 11,trw_tbar_wire_len 0 2,trw_show_sch 0 phy_row_name 0 vdir_browser_wrap 0 xwd_def_ext *.xwd 16,trw_tbar_pin_fanout 0 phy_track_display 0 phy_macro_type_select_mux 64 phy_macro_type_name_flop 16 phy_macro_obs_color #f0d218 11,trw_tbar_wire_cap 0 8,trw_show_info 1 16,trw_show_sch 0 phy_white_border 1 phy_pcell_color #00d0d0 phy_macro_generic_name 0 phy_macro_fixed_display 1 1,trw_tbar_pin_load 0 phy_blockage_boxes_polygon 0 5,trw_tbar_pin_fanout 0 save_preferences 1 phy_macro_type_color_other #2a6370 16,trw_show_info 1 6,trw_tbar_wire_len 0 8,trw_show_bar 0 3,trw_air_top_zoom 0 phy_airline_dcol 1 def_def_ext *.def 13,trw_air_top_zoom 0 11,trw_show_bar 0 3,trw_show_info 1 wrap,help none phy_pin_obs_display 0 11,trw_tbar_pin_load 0 6,trw_tbar_wire_cap 0 phy_macro_cover_style 2 replay_interval 50 phy_blockage_placement_soft_color #d26c6c tcl_def_ext *.tcl phy_macro_type_color_mux red phy_pinstance_color #d66922 16,trw_tbar_wire_len 0 splash,interval 3000 f_dialog {-size 10 -family helvetica} Linux,xwdtopnm /usr/bin/xwdtopnm phy_boundary_die 1 11,trw_show_info 1 phy_guide_name 0 1,trw_show_sch 0 balloon_help 0 sch_rip_index 1 phy_macro_type_display_flop 16 16,trw_tbar_wire_cap 0 f_hlist {-size 10 -family courier} sch,hier_sep : phy_airline_color blue ctree,hlist_sep ~ 15,trw_show_sch 0 6,trw_tbar_pin_load 0 phy_bump_style 2 phy_fpobject_select 0 message_msg_dft_fanout 0 1,trw_air_bot_zoom 0 Linux,pnmtops /usr/bin/pnmtops phy_pcell_display 1 phy_pin_color #f0d218 selection {} 11,trw_air_bot_zoom 0 phy_blockage_placement_color #a52a2a message_msg_popup 0 11,trw_air_steiner 1 5,trw_air_top_zoom 0 message_msg_allow_multiple_browser 0 phy_macro_fixed_color #00d0d0 15,trw_air_top_zoom 0 model,hlist_sep ~ phy_macro_placed_color #c1cadd 13,trw_air_steiner 1 trw,hdl 1 phy_macro_type_display_macro 128 sch_print_scale full phy_blockage_placement_soft_select 0 phy_region_color #f3b283 sch_display_netname 0 phy_macro_placed_name 0 17,trw_tbar_pin_fanout 0 15,trw_air_steiner 1 7,trw_show_bar 0 trw_tbar_color1 blue phy_boundary_core 1 phy_border_color #bebebe phy_macro_generic_color #31c8ae 17,trw_air_steiner 1 16,trw_tbar_pin_load 0 0,trw_tbar_wire_len 0 trw_tbar_color2 white phy_blackbox_select 0 10,trw_show_bar 0 trw_tbar_color3 blue 19,trw_air_steiner 1 trw_tbar_color4 white 6,trw_tbar_pin_fanout 0 phy_blockage_placement_partial_display 1 phy_fence_name 0 phy_cluster_select 0 0,trw_tbar_wire_cap 0 phy_pdmap_style 2 phy_macro_style 0 phy_macro_obs_display 0 phy_guide_display 1 10,trw_tbar_wire_len 0 0,trw_show_sch 0 3,trw_air_bot_zoom 0 phy_airline_glyph yellow phy_gcell_style 0 13,trw_air_bot_zoom 0 phy_row_style 0 phy,pan_threshold 20 7,trw_air_top_zoom 0 phy_bump_display 1 17,trw_air_top_zoom 0 phy_blockage_placement_derived_name 0 14,trw_show_sch 0 10,trw_tbar_wire_cap 0 phy_bump_select 0 phy_gcell_display 0 phy_pinstance_select 0 sch_instattrmax 50 9,trw_show_info 1 0,trw_tbar_pin_load 0 busy_indicator 0 logical_show_pow_domain 0 sch_balloon_power 0 dialog,html 0 pow,r1,level0 0.0 5,trw_tbar_wire_len 0 phy_power_domain_color blue phy_pinstance_display 0 pow,r1,level1 0.1 6,trw_show_bar 0 pow,r1,level2 0.25 17,trw_show_info 1 10,trw_tbar_pin_fanout 0 fp_def_ext *.fp pow,r1,level3 0.5 phy_pinstance_name 1 wrap,object none pow,r1,level4 0.75 pow,r1,level5 1.0 selection_format full 10,trw_tbar_pin_load 0 5,trw_tbar_wire_cap 0 Linux,rgb /usr/X11R6/lib/X11/rgb.txt phy_macro_type_name_buf 4 wrap,xml word pow,r1,level6 2.0 4,trw_show_info 1 trw_show_info 1 pow,r1,level7 5.0 sch_color_scheme legacy 5,trw_air_bot_zoom 0 pow,r1,level8 10.0 15,trw_air_bot_zoom 0 cmd_def_ext *.cmd pow,r1,level9 20.0 15,trw_tbar_wire_len 0 9,trw_air_top_zoom 0 19,trw_air_top_zoom 0 18,trw_tbar_pin_fanout 0 phy_blockage_placement_partial_name 0 ctree,branch_count 100 phy_macro_obs_style 1 phy_fence_display 1 12,trw_show_info 1 phy_macro_type_name_inv 8 15,trw_tbar_wire_cap 0 phy_pcell_style 2 sch_balloon_dft 0 13,trw_show_sch 0 7,trw_tbar_pin_fanout 0 trw,manage {} 5,trw_tbar_pin_load 0 show_toolbar 0 phy_macro_type_select_other 2 ver_def_ext {*.v *.vpp *.vs *.vh *.h} tmg_mode {} phy_layer,visible,10 1 phy_layer,visible,11 1 phy_layer,visible,12 1 phy_airline_arrow 1 phy_layer,visible,13 1 phy_layer,visible,14 1 phy_layer,visible,15 1 5,trw_show_bar 0 phy_blockage_placement_partial_color #ffcbcf 7,trw_air_bot_zoom 0 phy_blockage_placement_soft_style 1 phy_macro_type_display_latch 32 17,trw_air_bot_zoom 0 15,trw_tbar_pin_load 0 phy_hier_pin_color #f0d218 phy_pinstance_style 0 edf_def_ext {*.edf *.edif} editor_command {} phy_blockage_routing_select 0 19,trw_show_bar 0 SunOS,rgb /usr/openwin/lib/X11/rgb.txt phy_macro_placed_display 1 phy_pcell_name 0 phy_pin_obs_color #f0d218 phy_airline_pin 1 phy_airline_label 1 phy_airline_scale 0 rc_def_ext *.rci phy_airline_style 2 11,trw_tbar_pin_fanout 0 use_file_cdir 0 sch_display_frame 0 logical_show_subdesign 1 9,trw_show_sch 0 phy_fence_color #ff9966 phy_pin_style 0 phy_blockage_placement_style 1 sch_balloon_mode 1 12,trw_show_sch 0 trw_show_text 0 phy_macro_fixed_style 2 phy_fpobject_display 0 phy_macro_type_name_phys_buf 256 phy_macro_placed_style 2 0,trw_tbar_pin_fanout 0 phy_egcell_select 0 backing_store 0 sch_balloon_timing 0 phy_region_style 0 phy_macro_type_name_macro 128 phy_pin_display 0 19,trw_tbar_pin_fanout 0 9,trw_air_bot_zoom 0 0,trw_air_steiner 1 phy_macro_cover_display 1 19,trw_air_bot_zoom 0 phy_layer,select,10 0 phy_macro_generic_style 2 2,trw_air_steiner 1 phy_layer,select,11 0 phy_layer,select,12 0 message_msg_no_validate 0 4,trw_air_steiner 1 4,trw_tbar_wire_len 0 4,trw_show_bar 0 trw_air_steiner 1 trw_tbar_wire_len 0 trw_show_bar 0 phy_layer,select,13 0 phy_cmap_course 0 phy_layer,select,14 0 vbrows,hlist_sep ~ 8,trw_tbar_pin_fanout 0 6,trw_air_steiner 1 phy_layer,select,15 0 phy_blockage_placement_partial_select 0 tmg_group {} phy_blockage_routing_display 0 vdir,hlist_sep / 18,trw_show_info 1 8,trw_air_steiner 1 18,trw_show_bar 0 4,trw_tbar_wire_cap 0 trw_tbar_wire_cap 0 hdl_popup_threshold 25 5,trw_show_info 1 hdl_crossprobe 0 sticky_tooltip 0 14,trw_tbar_wire_len 0 0,trw_air_top_zoom 0 balloon,time 1000 10,trw_air_top_zoom 0 phy_port_color #f0d218 logical_show_power_absolute 0 8,trw_show_sch 0 help,cdnshelp cdnshelp phy_macro_type_select_buf 4 14,trw_tbar_wire_cap 0 phy_pin_name 0 13,trw_show_info 1 11,trw_show_sch 0 phy_macro_type_color_flop purple phy_macro_type_display_mux 64 4,trw_tbar_pin_load 0 trw_tbar_pin_load 0 balloon,width 50 0,trw_show_info 1 phy_power_domain_style 0 12,trw_tbar_pin_fanout 0 9,trw_tbar_wire_len 0 phy_macro_type_select_inv 8 3,trw_show_bar 0 sdc_def_ext *.sdc liaho_on -1 14,trw_tbar_pin_load 0 9,trw_tbar_wire_cap 0 2,trw_air_top_zoom 0 1,trw_tbar_pin_fanout 0 sch_print_job page 17,trw_show_bar 0 12,trw_air_top_zoom 0 phy_layer,select,0 0 phy_row_display 0 phy_macro_type_color_buf yellow phy_layer,select,1 0 19,trw_tbar_wire_len 0 trw_air_width 2 phy_layer,select,2 0 phy_layer,select,3 0 phy_layer,select,4 0 f_trw {-size 12 -family courier} phy_layer,select,5 0 phy_egcell_color #ffff00 phy_macro_type_color_macro bisque rules,hlist_sep / phy_layer,select,6 0 19,trw_tbar_wire_cap 0 9,trw_tbar_pin_fanout 0 phy_layer,select,7 0 phy_bump_name 0 number_digits 2 7,trw_show_sch 0 f_label {-size 10 -family helvetica -weight bold} phy_layer,select,8 0 phy_macro_type_color_inv green phy_layer,select,9 0 phy_layer,style,0 1 10,trw_show_sch 0 9,trw_tbar_pin_load 0 phy_layer,style,1 1 phy_layer,style,2 1 phy_layer,style,3 1 phy_power_domain_display 1 phy_layer,style,4 1 phy_layer,style,5 1 phy_power_domain_select 0 0,trw_air_bot_zoom 0 phy_layer,style,6 1 phy_blockage_placement_partial_style 2 phy_region_name 0 phy_port_select 1 10,trw_air_bot_zoom 0 phy_layer,style,7 1 tmg,skip_inputs 0 lef_def_ext *.lef sch_box_scale 10 4,trw_air_top_zoom 0 trw_air_top_zoom 0 phy_layer,style,8 1 phy_macro_type_name_latch 32 hdl,file_size 20000000 phy_query 1 phy_hier_pin_style 0 14,trw_air_top_zoom 0 2,trw_show_bar 0 phy_layer,style,9 1 phy_blockage_placement_select 0 phy_macro_type_display_phys_buf 256 19,trw_tbar_pin_load 0 3,trw_tbar_wire_len 0 phy_blockage_placement_soft_display 1 phy_macro_type_color_phys_buf cyan vhd_def_ext {*.vhd *.vhdl} trw,nlength 100 phy_layer,override 0 phy_track_display_line 0 phy_port_display 1 phy_macro_type_select_place_buf 512 phy_pin_obs_style 1 phy_macro_generic_display 1 top_design {} 16,trw_show_bar 0 3,trw_tbar_wire_cap 0 phy_port_name 0 19,trw_show_info 1 10,trw_air_steiner 1 SunOS,xpr /usr/openwin/bin/xpr phy,pan_fine1 0.10 13,trw_tbar_pin_fanout 0 phy_core_color #bebebe cpf_def_ext *.cpf phy,pan_fine2 0.05 phy_macro_display 0 12,trw_air_steiner 1 phy_cluster_color #d66922 logical_show_lib_domain 0 phy_macro_fixed_select 1 13,trw_tbar_wire_len 0 phy_fence_style 0 phy_macro_type_display_other 2 14,trw_air_steiner 1 6,trw_show_info 1 phy_cluster_name 1 phy,color_limit 9 printer_command lpr message_msg_single_file 0 16,trw_air_steiner 1 6,trw_show_sch 0 phy_airline_wide 0 logical_show_cghier 0 2,trw_tbar_pin_fanout 0 phy_layer,total 15 phy_blockage_routing_color #ffff00 phy_fpobject_name 1 18,trw_air_steiner 1 13,trw_tbar_wire_cap 0 2,trw_air_bot_zoom 0 12,trw_air_bot_zoom 0 6,trw_air_top_zoom 0 sch_balloon_wait 500 16,trw_air_top_zoom 0 14,trw_show_info 1 3,trw_tbar_pin_load 0 phy_macro_placed_select 1 phy_macro_name 0 png_def_ext *.png message_msg_dft_fanin 1 phy_layer,color,0 #f4a460 8,trw_tbar_wire_len 0 1,trw_show_info 1 phy_layer,color,1 #0000ff 1,trw_show_bar 0 phy_layer,color,2 #ff0000 phy_layer,color,3 #00d000}
+set ::_phy_edit_move 0
+array set ::vrc_colorsel {}
+array set ::tixPrimOpt {-borderwidth 1 -bd 1 -highlightcolor 1 -background 1 -highlightbackground 1 -bg 1 -takefocus 1 -cursor 1 -relief 1 -width 1 -height 1}
+array set ::tix {-haspixmap true bmp:cbxarrow @/usr/local-eit/cad2/cadence/gen161/etc/synth/tcltk/tix/bitmaps/cbxarrow.xbm et 0 -scheme WmDefault bmp:cross @/usr/local-eit/cad2/cadence/gen161/etc/synth/tcltk/tix/bitmaps/cross.xbm image 0 -grabmode global bitmapdirs /usr/local-eit/cad2/cadence/gen161/etc/synth/tcltk/tix/bitmaps className tixAppContext ClassName TixAppContext -percentsubst 0 -binding TK -fontset WmDefault -extracmdargs 1 -libdir /usr/local-eit/cad2/cadence/gen161/etc/synth/tcltk/tix bmp:tick @/usr/local-eit/cad2/cadence/gen161/etc/synth/tcltk/tix/bitmaps/tick.xbm -schemepriority 20 -debug 0 context tixAppContext -filedialog tixFileSelectDialog initialized 1}
+set ::sul Genus_Synthesis
+array set ::vrpd_toggle {}
+array set ::model_create {SDC_FILE_LIST {} VHDL_FILE_LIST {} OUTPUT_DIRECTORY /h/d5/u/lu1622pe-s/etin35_project/synthesis type blackbox VERILOG_FILE_LIST {} LIBRARY_FILE_LIST {}}
+array set ::_phy_orient_convert {rotatel,FS FW flipv,FE E fliph,FS N flipv,S FS rotater,FN FW rotatel,FE FS rotatel,S E flipv,E FE flipv,FW W fliph,S FN fliph,FE W rotater,N E rotatel,E N rotatel,FW FN flipv,W FW fliph,FW E fliph,E FW rotatel,W S rotater,FS FE fliph,W FE rotater,FE FN rotater,S W flipv,FN N rotater,E S rotater,FW FS rotatel,FN FE fliph,FN S flipv,N FN rotater,W N rotatel,N W fliph,N FS flipv,FS S}
+set ::top genusHaloMain
+array set ::vrc_report_dft_segments_table {}
+array set ::tixSimpleDialog {isWidget 1 staticOptions {} methods {} defaults {} options {
+	-buttons -message -type
+    } superClass tixDialogShell virtual 1 forceCall {} ClassName TixSimpleDialog className tixSimpleDialog}
+array set ::vrc_report_power_table {}
+set ::cpf_revision 1.0
+set ::vrldPriv {}
+array set ::vrc_rg_table {}
+set ::tix_library /usr/local-eit/cad2/cadence/gen161/tools/lib/cdn/tcltk/tix
+array set ::tixScrolledTList {isWidget 1 staticOptions {} methods {
+    } defaults {
+	{.scrollbar			auto}
+	{*borderWidth			1}
+	{*tlist.background		#c3c3c3}
+	{*tlist.highlightBackground	#d9d9d9}
+	{*tlist.relief			sunken}
+	{*tlist.takeFocus		1}
+	{*Scrollbar.takeFocus		0}
+    } options {
+    } superClass tixScrolledWidget virtual 1 forceCall {} ClassName TixScrolledTList className tixScrolledTList}
+array set ::_help_tips {.rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl {HDL source viewer.} .rc.statusbar.busy.canvas {Busy indicator.} .rc.statusbar.info.canvas {Persistent message display.} .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.name {History list
+Select entry to view.} .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.tb.cnum {Column number of cursor
+Update value and <Return> to change.} .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.tb.lnum {Line number of cursor
+Update value and <Return> to change.} .rc.statusbar.msg.canvas {Transient message display.} .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.bb.name {History list
+Select entry to view.} .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.logical {Logical hierarchy display.} .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.tb.cpage {Current page
+Update value and <Return> to change.} .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.tb.tpage {Total pages.} .rc.statusbar.progress.canvas {Progress bar.}}
+array set ::_vrc_attr_toggle {}
+set ::lp_rc_cg_use_unified_cg_remove_flow 1
+array set ::vrpr_toggle {}
+array set ::tixFileEntry {isWidget 1 staticOptions {
+	-filebitmap
+    } methods {
+	invoke filedialog update
+    } defaults {
+	{*frame.borderWidth		2}
+	{*frame.relief			sunken}
+	{*Button.highlightThickness	0}
+	{*Entry.highlightThickness	0}
+	{*Entry.borderWidth 		0}
+    } options {
+	-activatecmd -command -dialogtype -disablecallback -disabledforeground
+	-filebitmap -selectmode -state -validatecmd -value -variable
+    } superClass tixLabelWidget virtual 1 forceCall {
+	-variable
+    } ClassName TixFileEntry className tixFileEntry}
+set ::_phy_modal_airlines 0
+array set ::vColor {sch,bw,boxcolor1 #000000 phy,color4 #bcbca8 xbrows,xprobe red sch,bw,boxcolor2 #000000 phy,color5 #85fb67 hdl,fg black sch,bw,boxcolor3 #000000 phy,cmap,0 yellow phy,color6 #e7f50e hdl,symbol blue sch,legacy,background #000000 phy,cmap,1 orange phy,color7 #eedc28 hdl,string #aa3030 hdl,directive #3030bb phy,cmap,2 red phy,color8 #ff9836 hdl,xprobe #c80000 xbrows,info #429db1 phy,cmap,3 maroon phy,color9 #db1353 sch,conformal,boxpincolor #ff8000 phy,cmap,4 purple xbrows,warning #efc818 sch,bw,background #ffffff phy,cmap,5 white sch,conformal,boxcolor1 #ff8000 sch,conformal,boxcolor2 #ff8000 hdl,keyword blue sch,conformal,boxcolor3 #ff0000 xbrows,error #a52a2a sch,legacy,rippercolor #00d1d1 hdl,strings red sch,conformal,background #000000 hdl,gatetype magenta hdl,operator brown pow,color0 #0047e6 sch,legacy,boxinstcolor #8fffff trw,highlight #555555 pow,color1 #769fda phy,fg white hdl,selection #555555 pow,color2 #c6d1f0 sch,legacy,boxcolor #00d1d1 sch,bw,portcolor #000000 hdl,stripe yellow pow,color3 #afd3a9 pow,color4 #bcbca8 sch,bw,boxinstcolor #000000 phy,color10 #ffff00 pow,color5 #85fb67 phy,color11 #008000 pow,color6 #e7f50e sch,bw,boxcolor #000000 phy,color12 #ff00ff hdl,comment #00aa00 pow,color7 #eedc28 rules,bg white phy,color13 #ffc0cb pow,color8 #ff9836 phy,color14 #00ffff pow,color9 #db1353 sch,legacy,fillcolor1 purple sch,legacy,boxpincolor #00d1eb phy,color15 #800080 xbrows,data blue sch,legacy,fillcolor2 green sch,conformal,portcolor #ff8000 sch,legacy,fillcolor3 #c80000 sch,legacy,boxcolor1 purple sch,legacy,boxcolor2 green sch,conformal,boxinstcolor #ff8000 hdl,bg white hdl,number #00aa00 sch,legacy,boxcolor3 #c80000 sch,bw,fillcolor1 #ffffff model,bg white sch,conformal,boxcolor #ff8000 sch,bw,fillcolor2 #ffffff sch,bw,fillcolor3 #ffffff hdl,ignore gray70 hdl,at #3030bb busy,off green sch,legacy,overlapcolor #bfa100 hdl,comparator brown busy,on red xbrows,viewed purple hdl,normal black progress #c80000 sch,conformal,fillcolor1 #ffffff sch,conformal,fillcolor2 #ffffff sch,bw,overlapcolor #000000 sch,conformal,fillcolor3 #ff0000 ctree,bg white hdl,dpsystask red hdl,single_quote red sch,legacy,buscolor #bfa100 hdl,pragma #cc0000 pow,domain,0 #0047e6 phy,bg black pow,domain,1 #769fda sch,legacy,portcolor #00d1d1 sch,conformal,overlapcolor #a5ffa5 xbrows,sticky red pow,domain,2 #c6d1f0 sch,bw,rippercolor #000000 sch,bw,buscolor #000000 logical,bg white hdl,replace pink pow,domain,3 #afd3a9 sch,objecthighlight0 red sch,legacy,netcolor #ffff00 trw,xprobe #c80000 pow,domain,4 #bcbca8 sch,objecthighlight10 #0047e6 sch,objecthighlight1 green pow,domain,5 #85fb67 sch,objecthighlight11 #769fda sch,objecthighlight2 blue pow,domain,6 #e7f50e sch,objecthighlight12 #c6d1f0 sch,objecthighlight3 white pow,domain,7 #eedc28 sch,objecthighlight13 #afd3a9 sch,objecthighlight4 yellow sch,bw,netcolor #000000 pow,domain,8 #ff9836 sch,objecthighlight14 #bcbca8 sch,objecthighlight5 cyan hdl,error red hdl,type #0040cc pow,domain,9 #db1353 sch,objecthighlight15 #85fb67 sch,objecthighlight6 magenta hdl,attr orange sch,objecthighlight16 #e7f50e sch,objecthighlight7 purple sch,conformal,rippercolor #a5ffa5 sch,conformal,buscolor #a5ffa5 tooltip,bg white sch,objecthighlight17 #eedc28 sch,objecthighlight8 salmon sch,objecthighlight {red green blue white yellow cyan magenta purple salmon #ff0000 #0047e6 #769fda #c6d1f0 #afd3a9 #bcbca8 #85fb67 #e7f50e #eedc28 #ff9836 #db1353} sch,objecthighlight18 #ff9836 sch,objecthighlight9 #ff0000 hdl,declaration red sch,objecthighlight19 #db1353 phy,color0 #27899e sch,conformal,netcolor #a5ffa5 phy,color1 #769fda busy,manual yellow sch,bw,boxpincolor #000000 phy,color2 #c6d1f0 phy,color3 #afd3a9}
+array set ::_phy_select {.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.fr.canvas,name {} .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.fr.canvas,type {}}
+set ::_colors {{#f4a460} #0000ff #ff0000 #00d000 #d0d000 #a52a2a #ffa500 #d000d0 #00d0d0 #a52a2a #ffff00 #008000 #ff00ff #ffc0cb #00ffff #800080}
+array set ::tixScrolledGrid {isWidget 1 staticOptions {} methods {
+    } defaults {
+	{.scrollbar			auto}
+	{*grid.borderWidth		1}
+	{*grid.Background		#c3c3c3}
+	{*grid.highlightBackground	#d9d9d9}
+	{*grid.relief			sunken}
+	{*grid.takeFocus		1}
+	{*Scrollbar.takeFocus		0}
+    } options {
+    } superClass tixScrolledWidget virtual 1 forceCall {} ClassName TixScrolledGrid className tixScrolledGrid}
+set ::_phy_fpobject_id 0
+set ::_phy_modal_steiner_trees 0
+set ::isTkMode 0
+array set ::vSession {}
+set ::_skipsync 0
+array set ::vrc_trw_win {}
+array set ::tixLabelEntry {isWidget 1 staticOptions {
+    } methods {
+    } defaults {
+	{.borderWidth 			0}
+	{*entry.relief			sunken}
+	{*entry.width			7}
+	{*label.anchor			e}
+	{*label.borderWidth		0}
+    } options {
+	-disabledforeground -state
+    } superClass tixLabelWidget virtual 1 forceCall {
+	-state
+    } ClassName TixLabelEntry className tixLabelEntry}
+array set ::vrc_ii_table {}
+array set ::optLkgLibPower {}
+set ::tcl_nonwordchars {\W}
+set ::SYNT_OUT .//outputs
+array set ::vrg_toggle {}
+array set ::optLkgTlibIndex {}
+set ::_phys_pdata_static_update 0
+set ::tix_patchLevel 8.4.3
+set ::vraPriv {}
+array set ::vrc_rdv_table {}
+set ::vrdcPriv {}
+array set ::sgnPriv {.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.sgn.sch,mouseMoved 0 .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.sgn.sch,x 0 .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.sgn.sch,y 0}
+array set ::optVtLibs {}
+array set ::vrc_report_stats_table {}
+array set ::tixScrolledWindow {isWidget 1 staticOptions {
+    } methods {
+    } defaults {
+	{.scrollbar			auto}
+	{*window.borderWidth		1}
+	{*f1.borderWidth		1}
+	{*Scrollbar.borderWidth		1}
+	{*Scrollbar.takeFocus		0}
+    } options {
+	-expandmode -shrink -xscrollincrement -yscrollincrement
+    } superClass tixScrolledWidget virtual 1 forceCall {} ClassName TixScrolledWindow className tixScrolledWindow}
+array set ::tixStdButtonBox {isWidget 1 staticOptions {} methods {} defaults {
+	{.borderWidth 	1}
+	{.relief 	raised}
+	{.padX 		5}
+	{.padY 		10}
+	{*Button.anchor	c}
+	{*Button.padX	5}
+    } options {
+	-applycmd -cancelcmd -helpcmd -okcmd
+    } superClass tixButtonBox virtual 1 forceCall {} ClassName TixStdButtonBox className tixStdButtonBox}
+array set ::tixDetailList {isWidget 1 staticOptions {} methods {
+    } defaults {
+	{*grid.topMargin		1}
+	{*grid.leftMargin		0}
+    } options {
+	-hdrbackground
+    } superClass tixScrolledGrid virtual 1 forceCall {} ClassName TixDetailList className tixDetailList}
+array set ::vHdl {.rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl,column {} .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl,hdltype verilog .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl,line {} .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl,text .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl.text.text}
+set ::use_vt_bucketing_usable_attribute_var false
+set ::vrprPriv {}
+set ::uigRcDndWin genusHaloMain.rcDndWin
+set ::vrpPriv {}
+array set ::vrc_trw_btable {}
+set ::blt_useTkNamespaces 0
+array set ::vrc_report_dft_chains_table {}
+array set ::vrc_report_power_domain_table {}
+set ::_phy_fpobject_mode 0
+set ::qtfgUsed 0
+array set ::vrc_report_mux_table {}
+set ::vbgw_file_dialog_button {}
+array set ::tixVTree {isWidget 1 staticOptions {} methods {
+    } defaults {
+    } options {
+	-ignoreinvoke
+    } superClass tixScrolledHList virtual 1 forceCall {} ClassName TixVTree className tixVTree}
+array set ::tixScrolledText {isWidget 1 staticOptions {
+    } methods {
+    } defaults {
+	{.scrollbar			both}
+	{*Scrollbar.takeFocus		0}
+    } options {
+    } superClass tixScrolledWidget virtual 1 forceCall {
+	-scrollbar
+    } ClassName TixScrolledText className tixScrolledText}
+array set ::vDefaults {phy_layer,color,4 #d0d000 phy_blockage_placement_name 0 phy_blockage_placement_derived_color #7826a1 phy_cmap_label 0 f_status {-size 10 -family helvetica} phy_layer,color,5 #a52a2a phy_macro_select 0 phy_cmap_style 2 logical_phys_threshold 10 phy_layer,color,6 #ffa500 phy_layer,color,7 #d000d0 phy_blackbox_display 0 f_balloon {-size 10 -family courier} phy_layer,color,8 #00d0d0 phy_guide_color #f3b2e3 phy_layer,color,9 #a52a2a phy_port_style 1 phy_blockage_placement_display 1 phy_hier_pin_name 0 phy_layer,style,10 1 trw_air_bot_zoom 0 phy_layer,style,11 1 phy_layer,style,12 1 phy_blockage_placement_derived_select 0 f_text {-size 10 -family helvetica} phy_layer,style,13 1 phy_layer,style,14 1 phy_layer,visible,0 1 phy_fpobject_color #d66922 phy_region_select 0 phy_layer,style,15 1 phy_layer,visible,1 1 vdir_browser_d1 vdir phy_blackbox_color #d66922 phy_egcell_name 0 phy_layer,visible,2 1 sch_print_orientation auto phy_layer,visible,3 1 logical_threshold 50 phy_layer,visible,4 1 restore_geometry 1 phy_blockage_routing_name 0 phy_pcell_select 0 phy_layer,visible,5 1 phy_layer,visible,6 1 phy_layer,visible,7 1 phy_layer,visible,8 1 phy_layer,visible,9 1 phy_layer,color,10 #ffff00 sch_pinattrmax 20 phy_layer,color,11 #008000 phy_layer,color,12 #ff00ff sch_balloon_cap 0 phy_macro_cover_select 1 phy_gcell_name 0 phy_layer,color,13 #ffc0cb phy_layer,color,14 #00ffff phy_layer,color,15 #800080 phy_hier_pin_display 0 phy_blockage_placement_soft_name 0 phy_egcell_style 0 wrap,lint none phy_macro_generic_select 1 phy_layer,select,all 0 phy_layer,name,0 1 phy_macro_cover_color #ffaa00 phy_layer,name,1 1 phy_layer,name,2 1 phy_layer,name,3 1 sch_display_instname 0 number_separator none trw_show_sch 0 phy_layer,name,4 1 phy_umap_label 1 phy_layer,name,5 1 phy_umap_style 2 phy_layer,name,6 1 phy_layer,name,7 1 phy_layer,name,8 1 phy_layer,name,9 1 phy_cluster_display 0 phy_bump_color #e1bc71 sch_print_sheetname A sch_display_cellname 1 phy_guide_select 0 wrap,hdl none vdir_browser_ls_a 1 phy_blackbox_name 1 phy_gcell_select 0 phy_macro_cover_name 0 vdir_browser_ls_c 0 phy_fence_select 0 vdir_browser_ls_d 0 phy_egcell_display 0 sch_display_pinname 1 phy_cluster_style 0 phy_layer,visible,all 1 trw_tbar_pin_fanout 0 logical_show_power_percent 0 phy_layer,name,all 1 phy_blockage_routing_style 1 phy_blockage_placement_derived_display 1 phy_row_select 0 phy_macro_fixed_name 0 vdir_browser_ls_l 0 phy_power_domain_name 0 phy_gcell_color #ffff00 phy_row_color #4b4b4b sch_regenerate_sheetname None phy_blockage_placement_derived_style 1 phy_cmap_basis 1 phy_guide_style 0 phy_layer,name,10 1 phy_layer,name,11 1 phy_layer,name,12 1 phy_region_display 1 phy_layer,name,13 1 phy_layer,name,14 1 phy_region_boxes_polygon 1 phy_layer,name,15 1 focus_mode 0 phy_fpobject_style 0 phy_blackbox_style 0 phy_row_name 0 vdir_browser_wrap 0 phy_track_display 0 phy_macro_obs_color #f0d218 phy_white_border 1 phy_macro_fixed_display 1 phy_macro_generic_name 0 phy_pcell_color #00d0d0 phy_blockage_boxes_polygon 0 save_preferences 1 phy_airline_dcol 1 wrap,help none phy_pin_obs_display 0 phy_macro_cover_style 2 phy_blockage_placement_soft_color #d26c6c phy_pinstance_color #d66922 f_dialog {-size 10 -family helvetica} phy_boundary_die 1 phy_guide_name 0 sch_rip_index 1 balloon_help 0 f_hlist {-size 10 -family courier} phy_airline_color blue message_msg_dft_fanout 0 phy_fpobject_select 0 phy_bump_style 2 phy_pin_color #f0d218 phy_pcell_display 1 message_msg_popup 0 phy_blockage_placement_color #a52a2a message_msg_allow_multiple_browser 0 phy_macro_fixed_color #00d0d0 phy_macro_placed_color #c1cadd sch_print_scale full phy_macro_placed_name 0 sch_display_netname 0 phy_region_color #f3b283 phy_blockage_placement_soft_select 0 trw_tbar_color1 blue phy_border_color #bebebe phy_boundary_core 1 phy_macro_generic_color #31c8ae trw_tbar_color2 white phy_blackbox_select 0 trw_tbar_color3 blue trw_tbar_color4 white phy_cluster_select 0 phy_fence_name 0 phy_blockage_placement_partial_display 1 phy_macro_style 0 phy_macro_obs_display 0 phy_pdmap_style 2 phy_guide_display 1 phy_gcell_style 0 phy_airline_glyph yellow phy_row_style 0 phy_bump_display 1 phy_blockage_placement_derived_name 0 phy_bump_select 0 sch_instattrmax 50 phy_pinstance_select 0 phy_gcell_display 0 logical_show_pow_domain 0 busy_indicator 0 sch_balloon_power 0 phy_pinstance_display 0 phy_power_domain_color blue wrap,object none phy_pinstance_name 1 selection_format full trw_show_info 1 sch_color_scheme legacy phy_blockage_placement_partial_name 0 phy_macro_obs_style 1 phy_fence_display 1 phy_pcell_style 2 sch_balloon_dft 0 show_toolbar 0 phy_layer,visible,10 1 phy_layer,visible,11 1 phy_layer,visible,12 1 phy_airline_arrow 1 phy_layer,visible,13 1 phy_layer,visible,14 1 phy_layer,visible,15 1 phy_blockage_placement_partial_color #ffcbcf phy_blockage_placement_soft_style 1 phy_hier_pin_color #f0d218 phy_pinstance_style 0 phy_blockage_routing_select 0 phy_macro_placed_display 1 phy_pin_obs_color #f0d218 phy_pcell_name 0 phy_airline_pin 1 phy_airline_scale 0 phy_airline_label 1 phy_airline_style 2 sch_display_frame 0 use_file_cdir 0 logical_show_subdesign 1 phy_pin_style 0 phy_fence_color #ff9966 sch_balloon_mode 1 phy_blockage_placement_style 1 trw_show_text 0 phy_macro_fixed_style 2 phy_macro_placed_style 2 phy_fpobject_display 0 sch_balloon_timing 0 backing_store 0 phy_egcell_select 0 phy_pin_display 0 phy_region_style 0 phy_macro_cover_display 1 phy_layer,select,10 0 phy_macro_generic_style 2 phy_layer,select,11 0 message_msg_no_validate 0 phy_layer,select,12 0 trw_air_steiner 1 trw_tbar_wire_len 0 trw_show_bar 0 phy_layer,select,13 0 phy_cmap_course 0 phy_layer,select,14 0 phy_layer,select,15 0 phy_blockage_placement_partial_select 0 phy_blockage_routing_display 0 trw_tbar_wire_cap 0 hdl_crossprobe 0 sticky_tooltip 0 phy_port_color #f0d218 logical_show_power_absolute 0 phy_pin_name 0 trw_tbar_pin_load 0 phy_power_domain_style 0 sch_print_job page phy_layer,select,0 0 phy_row_display 0 phy_layer,select,1 0 trw_air_width 2 phy_layer,select,2 0 phy_layer,select,3 0 phy_layer,select,4 0 f_trw {-size 12 -family courier} phy_layer,select,5 0 phy_egcell_color #ffff00 phy_layer,select,6 0 phy_layer,select,7 0 number_digits 2 phy_bump_name 0 f_label {-size 10 -family helvetica -weight bold} phy_layer,select,8 0 phy_layer,select,9 0 phy_layer,style,0 1 phy_layer,style,1 1 phy_layer,style,2 1 phy_layer,style,3 1 phy_power_domain_display 1 phy_layer,style,4 1 phy_layer,style,5 1 phy_power_domain_select 0 phy_layer,style,6 1 phy_port_select 1 phy_region_name 0 phy_blockage_placement_partial_style 2 phy_layer,style,7 1 trw_air_top_zoom 0 phy_layer,style,8 1 phy_query 1 phy_hier_pin_style 0 phy_layer,style,9 1 phy_blockage_placement_select 0 phy_blockage_placement_soft_display 1 phy_track_display_line 0 phy_pin_obs_style 1 phy_port_display 1 phy_macro_generic_display 1 phy_port_name 0 phy_core_color #bebebe phy_macro_display 0 logical_show_lib_domain 0 phy_macro_fixed_select 1 phy_cluster_color #d66922 phy_fence_style 0 phy_cluster_name 1 message_msg_single_file 0 logical_show_cghier 0 phy_airline_wide 0 phy_layer,total 15 phy_fpobject_name 1 phy_blockage_routing_color #ffff00 phy_layer,style,all 1 phy_macro_placed_select 1 phy_macro_name 0 message_msg_dft_fanin 1 phy_layer,color,0 #f4a460 phy_layer,color,1 #0000ff phy_layer,color,2 #ff0000 phy_layer,color,3 #00d000}
+set ::_vrc_power_inst_table_wid {}
+array set ::_vrc_power_net_table {}
+set ::tcl_wordchars {\w}
+array set ::tixOption {fixed_font Courier prioLevel 20 courier_font Courier}
+array set ::tixStackWindow {isWidget 1 staticOptions {} methods {
+    } defaults {} options {
+    } superClass tixVStack virtual 1 forceCall {} ClassName TixStackWindow className tixStackWindow}
+set ::tk_library /usr/local-eit/cad2/cadence/gen161/tools/lib/cdn/tcltk/tk
+array set ::vrdp_toggle {}
+set ::optLkgCellList {}
+array set ::vrc_stats {}
+set ::_lint {}
+set ::lvt_weight_in_ratio_test_var 1.0
+set ::perc_for_small_bucket_detection_var 40
+array set ::vrld_toggle {}
+array set ::tixNoteBook {isWidget 1 staticOptions {} methods {
+    } defaults {
+	{.nbframe.tabPadX	8}
+	{.nbframe.tabPadY	5}
+	{.nbframe.borderWidth	2}
+	{*nbframe.relief	raised}
+    } options {
+    } superClass tixVStack virtual 1 forceCall {} ClassName TixNoteBook className tixNoteBook}
+array set ::vrc_report_drv_table1 {}
+array set ::vrc_report_drv_table2 {}
+array set ::vrc_report_drv_table3 {}
+set ::SYNT_SCRIPT .//scripts
+array set ::rda_global {interactive_debug 0 show_hints 1}
+set ::blt_version 8.0
+set ::qroot /usr/local-eit/cad2/cadence/gen161/tools/lib/cdn/gui_qt
+set ::_drv_fanout_count 0
+set ::nbel false
+set ::_phy_plan_mode 0
+array set ::tixMultiView {isWidget 1 staticOptions {} methods {
+	add
+    } defaults {
+    } options {
+	-browsecmd -command -view
+    } superClass tixPrimitive virtual 1 forceCall {
+	-view
+    } ClassName TixMultiView className tixMultiView}
+set ::gui_layer_name_10 1
+array set ::vrc_bdpy {}
+set ::gui_layer_name_11 1
+set ::gui_layer_name_12 1
+set ::gui_layer_name_13 1
+set ::gui_layer_name_14 1
+set ::gui_layer_name_15 1
+array set ::_phy_tpath {}
+array set ::tixScrolledListBox {isWidget 1 staticOptions {
+	-anchor
+    } methods {
+    } defaults {
+	{.scrollbar			auto}
+	{*borderWidth			1}
+	{*listbox.highlightBackground	#d9d9d9}
+	{*listbox.relief		sunken}
+	{*listbox.background		#c3c3c3}
+	{*listbox.takeFocus		1}
+	{*Scrollbar.takeFocus		0}
+    } options {
+	-anchor -browsecmd -command -state
+    } superClass tixScrolledWidget virtual 1 forceCall {} ClassName TixScrolledListBox className tixScrolledListBox}
+array set ::tixPopupMenu {isWidget 1 staticOptions {
+	-buttons
+    } methods {
+	bind post unbind
+    } defaults {
+	{*Menu.tearOff			0}
+    } options {
+	 -buttons -installcolormap -postcmd -spring -state -title
+    } superClass tixShell virtual 1 forceCall {} ClassName TixPopupMenu className tixPopupMenu}
+array set ::_table_resize {}
+set ::write_def_no_copy_snet 1
+set ::_tch_counter 0
+array set ::auto_execs {normal_prompt {} novus_ui_rename_initialization {} ::cmd_map::cmd_map_configure {}}
+array set ::vrc_instance_info_table {}
+array set ::.rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.logical.tree {pw:f1 .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.logical.tree.f1 counter 0 x,last 1.000000 vsbPadY 0 -sizebox 0 -scrollbar auto -highlightthickness 2 hsbPadX 0 lastScbW 14 -borderwidth 1 -browsecmd vrc_logical_add_clipboard -opencmd vrc_logical_open_branch indStyle tixStyle0 w:vsb .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.logical.tree.vsb lastScbH 14 -command vrc_logical_command -highlightcolor black -background gray94 w:root .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.logical.tree -ignoreinvoke 1 -highlightbackground #d9d9d9 w:hsb .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.logical.tree.hsb lastSpec 00 className tixTree ClassName TixTree -closecmd vrc_logical_close_branch pw:client .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.logical.tree.f1 lastMW 244 rootCmd ::.rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.logical.tree:root lastMH 646 y,last 1.000000 -options {
+        hlist.width 35
+        hlist.height 5
+        hlist.wideSelection false
+    } -takefocus 0 -cursor {} x,first 0.000000 -relief flat w:hlist .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.logical.tree.f1.hlist y,first 0.000000 -width 0 -scrollbarspace both context tixTree repack 0 -height 0}
+array set ::vrc_report_drv_table3_toggle {}
+set ::auto_noexec 1
+array set ::optLkgNumCells {}
+array set ::vrc_rde_id {}
+array set ::tixDialogShell {isWidget 1 staticOptions {} methods {
+	popdown popup center
+    } defaults {} options {
+	-mapped -minheight -minwidth -parent -transient
+    } superClass tixShell virtual 1 forceCall {} ClassName TixDialogShell className tixDialogShell}
+array set ::tixFloatEntry {isWidget 1 staticOptions {} methods {
+	invoke post unpost
+    } defaults {
+	{.entry.highlightThickness	0}
+    } options {
+	-command -value
+    } superClass tixPrimitive virtual 1 forceCall {} ClassName TixFloatEntry className tixFloatEntry}
+array set ::_vrc_attr_table_wid {}
+set ::_drv_fanout {}
+set ::_trace 0
+array set ::_scrollbar_priv {}
+array set ::vrc_trw_color {}
+array set ::vrc_rpd_table {}
+set ::tk_patchLevel 8.5.9
+set ::RTL ../pulpino/rtl
+set ::debugVtPartitioning_var 0
+array set ::vrde_toggle {}
+set ::ClkName_SPI clk_spi
+array set ::vPhy {pinstance,airlines 0 lineup_macro_dir top pcanvas_list .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.fr.canvas lineup_macro_spc {}}
+array set ::tixBusy {cursor watch}
+array set ::vbgw_find {}
+array set ::vrc_dparea {}
+set ::vrdePriv {}
+set ::ClkTop top_top
+array set ::vrc_report_power_rtl_table {}
+set ::vrmPriv {}
+set ::vrc_report_drv_table2_priv {}
+array set ::tixExFileSelectDialog {isWidget 1 staticOptions {} methods {} defaults {} options {
+	-command
+    } superClass tixDialogShell virtual 1 forceCall {} ClassName TixExFileSelectDialog className tixExFileSelectDialog}
+array set ::gui_cbk {callback,gui_sv {} callback,gui_sv_br1 {} callback,gui_tb {} callback,gui_pv {} callback,gui_lb_br1 {}}
+set ::optLkgTlibList {}
+array set ::vrc_report_dft_table {}
+array set ::vrds_toggle {}
+array set ::tixButtonBox {isWidget 1 staticOptions {
+	-orientation
+    } methods {
+	add invoke button buttons
+    } defaults {
+	{.borderWidth 		1}
+	{.relief 		raised}
+	{.padX 			5}
+	{.padY 			10}
+	{*Button.anchor		c}
+	{*Button.padX		5}
+    } options {
+	-orientation -orient -padx -pady -state
+    } superClass tixPrimitive virtual 1 forceCall {} ClassName TixButtonBox className tixButtonBox}
+array set ::vSch {cone,debug 0 fanout,sas -stop_at_seqs cone,append {} fanout,netlist {} fanin,tmc -tim_model_comb fanin,depth 999 fanin,sas -stop_at_seqs highlight {} fanin,netlist {} cone,netlist {} fanout,tmc -tim_model_comb sgn,symbols {} fanout,depth 999}
+array set ::.rc.pane.workarea.fr.pane {counter 0 btn,1 .rc.pane.workarea.fr.pane.btn1 -handlebg #c80000 browser,size 250 -highlightcolor black movePending 0 className tixPanedWindow w:viewer .rc.pane.workarea.fr.pane.viewer repack 0 viewer,allowresize 1 -highlightthickness 0 viewer,size 796 -borderwidth 0 -highlightbackground #c3c3c3 -handleactivebg #ececec maxReqH 1 viewer,expand 0 nItems 2 -options {} items {browser viewer} viewer,min 0 -relief flat viewer,max 100000 sep,1 .rc.pane.workarea.fr.pane.sep1 context tixPanedWindow viewer,forgotten 0 -panerelief flat browser,forgotten 0 -command {} w:root .rc.pane.workarea.fr.pane -background #d9d9d9 maxReqW 1 -dynamicgeometry 1 ClassName TixPanedWindow rootCmd ::.rc.pane.workarea.fr.pane:root browser,expand 0 -takefocus 0 -cursor {} -width 0 -separatorbg gray25 -orientation horizontal browser,allowresize 1 -separatoractivebg red viewer,rsize 796 browser,rsize 250 w:browser .rc.pane.workarea.fr.pane.browser -paneborderwidth 1 totalsize 1046 browser,min 0 -height 0 browser,max 100000}
+set ::skip_internal_error 0
+set ::_phy_marker 0
+set ::optMVTCells 1
+set ::gui_layer_style_10 1
+set ::gui_layer_style_11 1
+set ::gui_layer_style_12 1
+set ::gui_layer_style_13 1
+set ::gui_layer_style_14 1
+set ::gui_layer_style_15 1
+array set ::vSgn {.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic,tpage {} .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic,cpage_wid .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.tb.cpage .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic,tpage_wid .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.tb.tpage .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic,cpage {}}
+array set ::sgndata {}
+array set ::tixVResize {isWidget 1 staticOptions {} methods {
+	drag dragend dragstart
+    } defaults {} options {
+	-gridded -gridx -gridy -minwidth -minheight
+    } superClass tixPrimitive virtual 1 forceCall {} ClassName TixVResize className tixVResize}
+array set ::vWmgr {sch,title Schematic wcount 0 hdl,wprefix .hdl sgn,wprefix .sgn phy,wprefix .phy hdl,title HDL sgn,title SGN win,0 {} phy,title Physical sch,wprefix .sch}
+set ::gui_layer_visible_10 1
+set ::gui_layer_visible_11 1
+set ::gui_layer_visible_12 1
+set ::gui_layer_visible_13 1
+set ::gui_layer_visible_14 1
+set ::gui_layer_visible_15 1
+array set ::tixAppContext {isWidget 0 staticOptions {} methods {
+	cget configure addbitmapdir filedialog getbitmap getimage
+	option platform resetoptions setbitmap initstyle
+    } defaults {} options {
+	-binding -debug -extracmdargs -filedialog -fontset -grabmode
+	-haspixmap -libdir -scheme -schemepriority -percentsubst
+    } superClass {} virtual 1 forceCall {} ClassName TixAppContext className tixAppContext}
+array set ::tixDirList {isWidget 1 staticOptions {} methods {
+	chdir
+    } defaults {
+	{.scrollbar			auto}
+	{*borderWidth			1}
+	{*hlist.background		#c3c3c3}
+	{*hlist.indent			7}
+	{*hlist.relief			sunken}
+	{*hlist.height			10}
+	{*hlist.width			20}
+	{*hlist.padX			2}
+	{*hlist.padY			0}
+	{*hlist.wideSelection		0}
+	{*hlist.drawBranch		0}
+	{*hlist.highlightBackground	#d9d9d9}
+	{*hlist.itemType		imagetext}
+	{*hlist.takeFocus		1}
+    } options {
+	 -browsecmd -command -dircmd -disablecallback 
+	 -root -rootname -showhidden -value
+    } superClass tixScrolledHList virtual 1 forceCall {
+	-value
+    } ClassName TixDirList className tixDirList}
+array set ::tixCObjView {isWidget 1 staticOptions {
+    } methods {
+	adjustscrollregion
+    } defaults {
+	{.scrollbar			auto}
+	{*borderWidth			1}
+	{*canvas.background		#c3c3c3}
+	{*canvas.highlightBackground	#d9d9d9}
+	{*canvas.relief			sunken}
+	{*canvas.takeFocus		1}
+	{*Scrollbar.takeFocus		0}
+    } options {
+	-xscrollincrement -yscrollincrement
+    } superClass tixScrolledWidget virtual 1 forceCall {
+	-scrollbar
+    } ClassName TixCObjView className tixCObjView}
+array set ::vrc_rtlp {}
+array set ::tixScrolledWidget {isWidget 1 staticOptions {} methods {
+    } defaults {} options {
+	-scrollbar -scrollbarspace
+    } superClass tixPrimitive virtual 1 forceCall {} ClassName TixScrolledWidget className tixScrolledWidget}
+set ::ClkFall_uncertainty 200
+set ::InputDelay 500
+array set ::tixFileSelectBox {isWidget 1 staticOptions {} methods {
+	filter invoke
+    } defaults {
+	{.relief			raised}
+	{*filelist*Listbox.takeFocus	true}
+	{.borderWidth 			1}
+	{*Label.anchor			w}
+	{*Label.borderWidth		0}
+	{*TixComboBox*scrollbar		auto}
+	{*TixComboBox*Label.anchor	w}
+	{*TixScrolledListBox.scrollbar	auto}
+	{*Listbox.exportSelection	false}
+	{*directory*Label.text  	"Directories:"}
+	{*directory*Label.underline	0}
+	{*file*Label.text		"Files:"}
+	{*file*Label.underline		2}
+	{*filter.label			"Filter:"}
+	{*filter*label.underline	3}
+	{*filter.labelSide		top}
+	{*selection.label		"Selection:"}
+	{*selection*label.underline	0}
+	{*selection.labelSide		top}
+    } options {
+	-browsecmd -command -dir -directory -disablecallback
+	-grab -pattern -selection -value
+    } superClass tixPrimitive virtual 1 forceCall {
+	-value
+    } ClassName TixFileSelectBox className tixFileSelectBox}
+array set ::vrm_toggle {}
+set ::_sgn_list {}
+array set ::vrc_trw_tbar {}
+array set ::tixTree {isWidget 1 staticOptions {} methods {
+	autosetmode close getmode open setmode
+
+	addchild anchor column delete entrycget
+	entryconfigure header hide indicator info
+	item nearest see selection show
+    } defaults {
+	{.scrollbar			auto}
+	{*Scrollbar.takeFocus           0}
+	{*borderWidth                   1}
+	{*hlist.background              #c3c3c3}
+	{*hlist.drawBranch              1}
+	{*hlist.height                  10}
+	{*hlist.highlightBackground      #d9d9d9}
+	{*hlist.indicator               1}
+	{*hlist.indent                  20}
+	{*hlist.itemType                imagetext}
+	{*hlist.padX                    2}
+	{*hlist.padY                    2}
+	{*hlist.relief                  sunken}
+	{*hlist.takeFocus               1}
+	{*hlist.wideSelection           0}
+	{*hlist.width                   20}
+    } options {
+	-browsecmd -command -opencmd -closecmd
+    } superClass tixVTree virtual 1 forceCall {} ClassName TixTree className tixTree}
+array set ::vrc_rld_table {}
+set ::_vrc_dft_increg 0
+array set ::vrc_rde_table {}
+set ::CSV_TCL_DIR /usr/local-eit/cad2/cadence/gen161/tools/lib/cdn/sgn/tcl
+array set ::tixIconView {isWidget 1 staticOptions {
+    } methods {
+	add arrange
+    } defaults {
+	{.scrollbar			auto}
+	{*borderWidth			1}
+	{*canvas.background		#c3c3c3}
+	{*canvas.highlightBackground	#d9d9d9}
+	{*canvas.relief			sunken}
+	{*canvas.takeFocus		1}
+	{*Scrollbar.takeFocus		0}
+    } options {
+	-autoarrange
+    } superClass tixCObjView virtual 1 forceCall {
+    } ClassName TixIconView className tixIconView}
+array set ::tmgtPriv {}
+array set ::vTiming {tbar,tbscale 0.3333333333333333 line,pin 2 line,net 3 line,delay 12 hier,nvd 5 tbar,hwidth 5 line,arrival 13 tbar,cell,inv green hier,pvd 4 line,type 8 tbar,hbscale 0.3333333333333333 line,ivd 6 line,info 7 tbar,htscale 0.3333333333333333 line,fanout 9 tbar,cell,model purple hier,net 3 hier,pin 2 tbar,net blue tbar,hcolor {white yellow purple brown} line,rf 14 line,nvd 5 line,load 10 tbar,cell bisque tbar,cell,buf yellow line,pvd 4 hier,ivd 6 line,slew 11}
+set ::_vrc_rpt_tim_data {}
+set ::cur_novus false
+set ::move_based_on_leakage_in_fc_var 1
+array set ::vWin {phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,fpblock .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.fpblock statusbar,info .rc.statusbar.info.canvas main,menubar .rc.menubar dialog,x 0 dialog,y 0 mainWinTitle {Cadence Genus(TM) Synthesis Solution 16.12-s027_1} phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,undo .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.undo phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,aright .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.aright statusbar,busy .rc.statusbar.busy.canvas phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,zgrid .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.zgrid phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,commit .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.commit redline,suspend_count 0 model,show_current_view 0 phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,rotatel .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.rotatel phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,plan .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.plan main,pane .rc.pane sgn,state .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic.db.state panehide,workarea default phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,bar2 .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.bar2 phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,bar3 .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.bar3 phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,bar4 .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.bar4 phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,rotater .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.rotater sgn,main .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.schematic phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,editd .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.editd nb,sch .rc.pane.workarea.fr.pane.viewer.fr.nb phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,util .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.util phy,pcanvas .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.fr.canvas phy,main .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,fliph .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.fliph model,show_db 1 phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,delete .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.erase phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,atop .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.atop workPaneWin .rc.pane.workarea.fr.pane phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,zsel .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.zsel logical,tree .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.logical.tree phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,layers .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.layers phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,snet .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.snet phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,aleft .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.aleft nb,hdl .rc.pane.workarea.fr.pane.browser.fr.nb.nb panesize,browser 250 phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,move .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.move phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,cong .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.cong phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,pden .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.pden phy_world .rc.pane.workarea.fr.pane.browser.fr.pw phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,flipv .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.flipv main,statusbar .rc.statusbar logical,hlist .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.logical.tree.f1.hlist phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,options .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.options panesize,viewer 796 phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,abot .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.abot panesize,workarea 685 nb,logical .rc.pane.workarea.fr.pane.browser.fr.nb.nb phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,savei .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.savei phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,fplan .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.fplan statusbar,progress .rc.statusbar.progress.canvas dialogs {} main,toolbar .rc.toolbar statusbar,msg .rc.statusbar.msg.canvas phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,print .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.print toolbar,selection_count .rc.toolbar.sel.ce phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,gcell .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.gcell nb,phys .rc.pane.workarea.fr.pane.viewer.fr.nb statusbar,busycount 0 hdl,main .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.hdl phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,rows .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.rows phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,icons {.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.refr .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.zfit .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.zin .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.zout .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.zsel .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.zprev .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.panl .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.panr .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.panu .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.pand .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.erase .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.savei .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.print} mainWinName .rc logical,main .rc.pane.workarea.fr.pane.browser.fr.nb.nb.nbframe.logical phy,world .rc.pane.workarea.fr.pane.browser.fr.pw.world.wv.canvas phy,.rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical,edit .rc.pane.workarea.fr.pane.viewer.fr.nb.nbframe.physical.tb.edit panehide,main default}
+set ::blt_useTclNamespaces 1
+array set ::vMenu {}
+set ::_rpt_endp_data {}
+array set ::vii_toggle {}
+set ::all_cells_are_standard 0
+array set ::tixVStack {isWidget 1 staticOptions {} methods {
+	add delete pageconfigure pagecget pages raise raised
+    } defaults {} options {
+	-dynamicgeometry -ipadx -ipady
+    } superClass tixPrimitive virtual 1 forceCall {} ClassName TixVStack className tixVStack}
+set ::_drv_transition {}
+::legacy::set_attribute -quiet rc_st::st_lib_script_loaded 1 /
+rc_st::setup_log_dir
+rc_st::setup_pbs_db_dir
+if { ![llength [vfind / -library *]]} {
+::legacy::set_attribute -quiet shm_id_rc 1146964 /
+::legacy::set_attribute -quiet hostname_main almansur.fransg.eit.lth.se /
+::legacy::set_attribute -quiet pid_main 27279 /
+::legacy::set_attribute -quiet process_group_id 0 /
+::legacy::set_attribute -quiet max_cpus_per_server 8 /
+::legacy::set_attribute -quiet max_cpus_per_server_int 8 /
+::legacy::set_attribute -quiet timing_use_ecsm_pin_capacitance true /
+::legacy::set_attribute -quiet read_library_without_ecsm false /
+::legacy::set_attribute -quiet read_ccs_noise_data false /
+::legacy::set_attribute -quiet read_library_without_ccs false /
+::legacy::set_attribute -quiet read_library_without_ecsm_timing true /
+::legacy::set_attribute -quiet derive_bussed_pins false /
+::legacy::set_attribute -quiet on_demand_library_loading false /
+::legacy::set_attribute -quiet allow_template_optimisation true /
+::legacy::set_attribute -quiet library_scaling 2 /
+::legacy::set_attribute -quiet use_nextstate_type_only_to_assign_sync_ctrls false /
+::legacy::set_attribute -quiet lib_search_path {  /usr/local-eit/cad2/cmpstm/stm065v536/CORE65LPLVT_5.1/libs  /usr/local-eit/cad2/cmpstm/stm065v536/CLOCK65LPLVT_3.1/libs  /usr/local-eit/cad2/cmpstm/oldmems/mem2010/SPHDL100909-40446@1.0/libs  /usr/local-eit/cad2/cmpstm/dicp18/lu_pads_65nm  } /
+::legacy::set_attribute -quiet init_lib_search_path {  /usr/local-eit/cad2/cmpstm/stm065v536/CORE65LPLVT_5.1/libs  /usr/local-eit/cad2/cmpstm/stm065v536/CLOCK65LPLVT_3.1/libs  /usr/local-eit/cad2/cmpstm/oldmems/mem2010/SPHDL100909-40446@1.0/libs  /usr/local-eit/cad2/cmpstm/dicp18/lu_pads_65nm  } /
+}
+set list_libraries [string trim [string map { \} {} \{ {} \" {} } [::legacy::get_attr library /]]]
+if { "$list_libraries" ne "CLOCK65LPLVT_nom_1.20V_25C.lib  CORE65LPLVT_nom_1.20V_25C.lib  SPHDL100909_nom_1.20V_25C.lib  Pads_Oct2012.lib"} {
+::legacy::set_attribute library {  CLOCK65LPLVT_nom_1.20V_25C.lib  CORE65LPLVT_nom_1.20V_25C.lib  SPHDL100909_nom_1.20V_25C.lib  Pads_Oct2012.lib} /
+}
+set cur_attr_val [::legacy::get_attribute information_level /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 5 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet information_level 5 /}
+}
+set cur_attr_val [::legacy::get_attribute within_regress /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet within_regress false /}
+}
+set cur_attr_val [::legacy::get_attribute debug_qsort /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet debug_qsort false /}
+}
+set cur_attr_val [::legacy::get_attribute novus_ui /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet novus_ui false /}
+}
+set cur_attr_val [::legacy::get_attribute common_ui /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet common_ui false /}
+}
+set cur_attr_val [::legacy::get_attribute path /]
+if {(17 || [llength [split $cur_attr_val]]) && [string compare {. / /libraries/* /libraries/library_domains/*/* /libraries/library_sets/*/* /libraries/library_domains/* /libraries/library_sets/* /designs/* /designs/*/timing/clocks/ /designs/*/timing/clock_domains/* /designs/*/dft/test_clock_domains/* /designs/*/dft/mbist/mbist_clock_domains/* /designs/*/modes /designs/*/modes/*/clocks /designs/*/modes/*/clock_domains/* /mmmc_designs_spec/* /designs/*/mmmc/*} [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet path {. / /libraries/* /libraries/library_domains/*/* /libraries/library_sets/*/* /libraries/library_domains/* /libraries/library_sets/* /designs/* /designs/*/timing/clocks/ /designs/*/timing/clock_domains/* /designs/*/dft/test_clock_domains/* /designs/*/dft/mbist/mbist_clock_domains/* /designs/*/modes /designs/*/modes/*/clocks /designs/*/modes/*/clock_domains/* /mmmc_designs_spec/* /designs/*/mmmc/*} /}
+}
+set cur_attr_val [::legacy::get_attribute hostname_main /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare almansur.fransg.eit.lth.se [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hostname_main almansur.fransg.eit.lth.se /}
+}
+set cur_attr_val [::legacy::get_attribute pid_main /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 27279 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet pid_main 27279 /}
+}
+set cur_attr_val [::legacy::get_attribute operating_conditions_analysis_type /]
+if {(0 || [llength [split $cur_attr_val]]) && [string compare {} [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet operating_conditions_analysis_type {} /}
+}
+set cur_attr_val [::legacy::get_attribute operating_conditions_min /]
+if {(0 || [llength [split $cur_attr_val]]) && [string compare {} [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet operating_conditions_min {} /}
+}
+set cur_attr_val [::legacy::get_attribute operating_conditions_min_library /]
+if {(0 || [llength [split $cur_attr_val]]) && [string compare {} [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet operating_conditions_min_library {} /}
+}
+set cur_attr_val [::legacy::get_attribute operating_conditions_library_given /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet operating_conditions_library_given false /}
+}
+set cur_attr_val [::legacy::get_attribute optimize_net_area /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare true [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet optimize_net_area true /}
+}
+set cur_attr_val [::legacy::get_attribute net_area_weight_pct /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 100 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet net_area_weight_pct 100 /}
+}
+set cur_attr_val [::legacy::get_attribute inst_prefix /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare g [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet inst_prefix g /}
+}
+set cur_attr_val [::legacy::get_attribute ungroup_separator /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare _ [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet ungroup_separator _ /}
+}
+set cur_attr_val [::legacy::get_attribute default_var_direction_is_downward /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare true [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet default_var_direction_is_downward true /}
+}
+set cur_attr_val [::legacy::get_attribute tns_opto /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare true [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet tns_opto true /}
+}
+set cur_attr_val [::legacy::get_attribute write_vlog_unconnected_port_style /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare full [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet write_vlog_unconnected_port_style full /}
+}
+set cur_attr_val [::legacy::get_attribute compress_exceptions_during_synthesis /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare true [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet compress_exceptions_during_synthesis true /}
+}
+set cur_attr_val [::legacy::get_attribute probabilistic_extraction /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare true [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet probabilistic_extraction true /}
+}
+set cur_attr_val [::legacy::get_attribute phys_use_segment_parasitics /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare true [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet phys_use_segment_parasitics true /}
+}
+set cur_attr_val [::legacy::get_attribute phys_use_segment_resistance /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare true [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet phys_use_segment_resistance true /}
+}
+set cur_attr_val [::legacy::get_attribute phys_hum_route /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare true [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet phys_hum_route true /}
+}
+set cur_attr_val [::legacy::get_attribute design_mode_process /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare no_value [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet design_mode_process no_value /}
+}
+set cur_attr_val [::legacy::get_attribute fence_as_blockage_buffer_tree /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet fence_as_blockage_buffer_tree false /}
+}
+set cur_attr_val [::legacy::get_attribute report_layer_bin /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet report_layer_bin false /}
+}
+set cur_attr_val [::legacy::get_attribute phys_assume_met_fill /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 0.0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet phys_assume_met_fill 0.0 /}
+}
+set cur_attr_val [::legacy::get_attribute phys_use_invs_extraction /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet phys_use_invs_extraction false /}
+}
+set cur_attr_val [::legacy::get_attribute phys_route_blockage_free /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet phys_route_blockage_free false /}
+}
+set cur_attr_val [::legacy::get_attribute _scale_of_cap_per_unit_length_h /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 1.0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet _scale_of_cap_per_unit_length_h 1.0 /}
+}
+set cur_attr_val [::legacy::get_attribute _scale_of_cap_per_unit_length_v /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 1.0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet _scale_of_cap_per_unit_length_v 1.0 /}
+}
+set cur_attr_val [::legacy::get_attribute _scale_of_res_per_unit_length_h /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 1.0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet _scale_of_res_per_unit_length_h 1.0 /}
+}
+set cur_attr_val [::legacy::get_attribute _scale_of_res_per_unit_length_v /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 1.0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet _scale_of_res_per_unit_length_v 1.0 /}
+}
+set cur_attr_val [::legacy::get_attribute lp_insert_clock_gating /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet lp_insert_clock_gating false /}
+}
+set cur_attr_val [::legacy::get_attribute lp_power_unit /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare nW [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet lp_power_unit nW /}
+}
+set cur_attr_val [::legacy::get_attribute enable_runtime_by_stage /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare true [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet enable_runtime_by_stage true /}
+}
+set cur_attr_val [::legacy::get_attribute pbs_mmmc_adjust_fast /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare true [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet pbs_mmmc_adjust_fast true /}
+}
+set cur_attr_val [::legacy::get_attribute timing_use_ecsm_pin_capacitance /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare true [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet timing_use_ecsm_pin_capacitance true /}
+}
+set cur_attr_val [::legacy::get_attribute lp_clock_gating_auto_control /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare none [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet lp_clock_gating_auto_control none /}
+}
+set cur_attr_val [::legacy::get_attribute send_row_col /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet send_row_col false /}
+}
+set cur_attr_val [::legacy::get_attribute iopt_large_fanout_threshold /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare no_value [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet iopt_large_fanout_threshold no_value /}
+}
+set cur_attr_val [::legacy::get_attribute iopt_idealize_large_fanout /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet iopt_idealize_large_fanout false /}
+}
+set cur_attr_val [::legacy::get_attribute iopt_sequential_duplication_for_tns_opto /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet iopt_sequential_duplication_for_tns_opto false /}
+}
+set cur_attr_val [::legacy::get_attribute iopt_relax_scan_checks_in_sequential_resynthesis /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 1 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet iopt_relax_scan_checks_in_sequential_resynthesis 1 /}
+}
+set cur_attr_val [::legacy::get_attribute max_multiple_output_gate_support /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 3 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet max_multiple_output_gate_support 3 /}
+}
+set cur_attr_val [::legacy::get_attribute iopt_force_common_input_removal /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet iopt_force_common_input_removal false /}
+}
+set cur_attr_val [::legacy::get_attribute iopt_ultra_optimization /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet iopt_ultra_optimization false /}
+}
+set cur_attr_val [::legacy::get_attribute iopt_on_the_fly_configurations /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare true [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet iopt_on_the_fly_configurations true /}
+}
+set cur_attr_val [::legacy::get_attribute global_incremental_ignores_power /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet global_incremental_ignores_power false /}
+}
+set cur_attr_val [::legacy::get_attribute global_incremental_extra_effort /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet global_incremental_extra_effort false /}
+}
+set cur_attr_val [::legacy::get_attribute iopt_super_thread_debug /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet iopt_super_thread_debug 0 /}
+}
+set cur_attr_val [::legacy::get_attribute iopt_cell_count_optimization /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet iopt_cell_count_optimization false /}
+}
+set cur_attr_val [::legacy::get_attribute multibit_stalone_logical /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet multibit_stalone_logical false /}
+}
+set cur_attr_val [::legacy::get_attribute multibit_stalone_include_dyn_pow_net_area /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet multibit_stalone_include_dyn_pow_net_area false /}
+}
+set cur_attr_val [::legacy::get_attribute dump_cluster_info_for_group /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare -1 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet dump_cluster_info_for_group -1 /}
+}
+set cur_attr_val [::legacy::get_attribute iopt_enable_parallelization /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare true [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet iopt_enable_parallelization true /}
+}
+set cur_attr_val [::legacy::get_attribute gps_max_partition_size /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 130000 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet gps_max_partition_size 130000 /}
+}
+set cur_attr_val [::legacy::get_attribute pbs_comet_threshold /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 100000 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet pbs_comet_threshold 100000 /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_vhdl_read_version /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 1993 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_vhdl_read_version 1993 /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_vhdl_environment /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare common [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_vhdl_environment common /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_vhdl_case /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare original [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_vhdl_case original /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_preserve_unused_registers /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_preserve_unused_registers false /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_preserve_unused_flop /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_preserve_unused_flop false /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_preserve_unused_latch /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_preserve_unused_latch false /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_error_on_latch /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_error_on_latch false /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_error_on_logic_abstract /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_error_on_logic_abstract false /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_parameter_naming_style /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare _%s%d [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_parameter_naming_style _%s%d /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_generate_index_style /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare {%s[%d]} [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_generate_index_style {%s[%d]} /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_instance_array_naming_style /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare {%s[%d]} [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_instance_array_naming_style {%s[%d]} /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_infer_ram /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_infer_ram false /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_case_sensitive_instances /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare none [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_case_sensitive_instances none /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_ff_keep_feedback /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_ff_keep_feedback false /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_ff_keep_explicit_feedback /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_ff_keep_explicit_feedback false /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_latch_keep_feedback /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_latch_keep_feedback false /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_common_subexpression_elimination /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare true [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_common_subexpression_elimination true /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_remove_cdfg_redundancies /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare true [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_remove_cdfg_redundancies true /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_map_ram /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare et_prim [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_map_ram et_prim /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_enable_slp /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare true [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_enable_slp true /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_extract_sum_of_products_logic /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare true [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_extract_sum_of_products_logic true /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_combine_sop_nodes /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 1 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_combine_sop_nodes 1 /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_reduce_mux_chain /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 1 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_reduce_mux_chain 1 /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_infer_macro /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 1 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_infer_macro 1 /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_enable_bitwidth_analysis_based_pruning /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 1 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_enable_bitwidth_analysis_based_pruning 1 /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_enable_xform_constant_shiftrotates /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 1 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_enable_xform_constant_shiftrotates 1 /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_simplify_variable_part_selects /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 1 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_simplify_variable_part_selects 1 /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_strict_ieee_compliance /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_strict_ieee_compliance false /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_unconnected_input_port_value /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare none [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_unconnected_input_port_value none /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_undriven_output_port_value /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare none [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_undriven_output_port_value none /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_undriven_signal_value /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare none [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_undriven_signal_value none /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_enable_non_default_library_domain_binding /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare true [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_enable_non_default_library_domain_binding true /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_error_on_blackbox /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_error_on_blackbox false /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_rename_cdn_flop_pins /]
+if {(0 || [llength [split $cur_attr_val]]) && [string compare {} [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_rename_cdn_flop_pins {} /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_reg_naming_style /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare %s_reg%s [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_reg_naming_style %s_reg%s /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_error_on_negedge /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_error_on_negedge false /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_new_case_logic /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare true [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_new_case_logic true /}
+}
+set cur_attr_val [::legacy::get_attribute use_abstract_models /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet use_abstract_models false /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_resolve_instance_with_libcell /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_resolve_instance_with_libcell false /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_use_techelt_first /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_use_techelt_first false /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_resolve_parameterized_instance_with_structural_module /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_resolve_parameterized_instance_with_structural_module false /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_use_parameterized_module_by_name /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_use_parameterized_module_by_name false /}
+}
+set cur_attr_val [::legacy::get_attribute input_pragma_keyword /]
+if {(5 || [llength [split $cur_attr_val]]) && [string compare {cadence synopsys ambit pragma synthesis} [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet input_pragma_keyword {cadence synopsys ambit pragma synthesis} /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_ignore_pragma_names /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare coverage [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_ignore_pragma_names coverage /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_language /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare v2001 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_language v2001 /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_sync_set_reset /]
+if {(0 || [llength [split $cur_attr_val]]) && [string compare {} [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_sync_set_reset {} /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_async_set_reset /]
+if {(0 || [llength [split $cur_attr_val]]) && [string compare {} [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_async_set_reset {} /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_retain_subprogram_hier /]
+if {(0 || [llength [split $cur_attr_val]]) && [string compare {} [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_retain_subprogram_hier {} /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_bus_wire_naming_style /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare {%s[%d]} [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_bus_wire_naming_style {%s[%d]} /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_array_naming_style /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare {%s[%d]} [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_array_naming_style {%s[%d]} /}
+}
+set cur_attr_val [::legacy::get_attribute hdl_record_naming_style /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare {%s[%s]} [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet hdl_record_naming_style {%s[%s]} /}
+}
+set cur_attr_val [::legacy::get_attribute flatten_array /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare flatten_array [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet flatten_array flatten_array /}
+}
+set cur_attr_val [::legacy::get_attribute inline /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare inline [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet inline inline /}
+}
+set cur_attr_val [::legacy::get_attribute proto_hdl /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet proto_hdl false /}
+}
+set cur_attr_val [::legacy::get_attribute load_tcl_modules /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare rc [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet load_tcl_modules rc /}
+}
+set cur_attr_val [::legacy::get_attribute program_debug_info /]
+if {(8 || [llength [split $cur_attr_val]]) && [string compare {16.12-s027_1 16.1.13 {Oct  5 2016} /usr/local-eit/cad2/cadence/gen161/tools/synth/bin/64bit/genus /usr/local-eit/cad2/cadence/gen161/tools} [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet program_debug_info {16.12-s027_1 16.1.13 {Oct  5 2016} /usr/local-eit/cad2/cadence/gen161/tools/synth/bin/64bit/genus /usr/local-eit/cad2/cadence/gen161/tools} /}
+}
+set cur_attr_val [::legacy::get_attribute cle__disable_extra_space /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet cle__disable_extra_space 0 /}
+}
+set cur_attr_val [::legacy::get_attribute legacy_before_eval_novus /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet legacy_before_eval_novus false /}
+}
+set cur_attr_val [::legacy::get_attribute novus_before_eval_legacy /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet novus_before_eval_legacy false /}
+}
+set cur_attr_val [::legacy::get_attribute dft_native_boundary_scan /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare true [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet dft_native_boundary_scan true /}
+}
+set cur_attr_val [::legacy::get_attribute dft__within_replace_scan /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet dft__within_replace_scan 0 /}
+}
+set cur_attr_val [::legacy::get_attribute dft__within_replace_scan_preprocessing /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet dft__within_replace_scan_preprocessing 0 /}
+}
+set cur_attr_val [::legacy::get_attribute eta__debug /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet eta__debug 0 /}
+}
+set cur_attr_val [::legacy::get_attribute suppress_messages /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet suppress_messages false /}
+}
+set cur_attr_val [::legacy::get_attribute degenerate_combo_elts_to_basic /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet degenerate_combo_elts_to_basic 0 /}
+}
+set cur_attr_val [::legacy::get_attribute spef__print_swapping_stats /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet spef__print_swapping_stats 0 /}
+}
+set cur_attr_val [::legacy::get_attribute spef__min_cap_ratio_threshold /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 2.5 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet spef__min_cap_ratio_threshold 2.5 /}
+}
+set cur_attr_val [::legacy::get_attribute spef__detour_net_threshold /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 0.0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet spef__detour_net_threshold 0.0 /}
+}
+set cur_attr_val [::legacy::get_attribute spef__site_size_multiple_threshold /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 0.0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet spef__site_size_multiple_threshold 0.0 /}
+}
+set cur_attr_val [::legacy::get_attribute write_vlog_insert_new_line_after_separator /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet write_vlog_insert_new_line_after_separator 0 /}
+}
+set cur_attr_val [::legacy::get_attribute aupt__debug /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet aupt__debug 0 /}
+}
+set cur_attr_val [::legacy::get_attribute aupt_module_size_threshold /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 80000 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet aupt_module_size_threshold 80000 /}
+}
+set cur_attr_val [::legacy::get_attribute aupt_combo_input_count_threshold /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 150000 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet aupt_combo_input_count_threshold 150000 /}
+}
+set cur_attr_val [::legacy::get_attribute aupt__tolerance /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 10 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet aupt__tolerance 10 /}
+}
+set cur_attr_val [::legacy::get_attribute pbs__ssyn_gs_part_enabled /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet pbs__ssyn_gs_part_enabled 0 /}
+}
+set cur_attr_val [::legacy::get_attribute pbs__ssyn_use_new_modes /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet pbs__ssyn_use_new_modes 0 /}
+}
+set cur_attr_val [::legacy::get_attribute pbs__pbs_stage /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare -1 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet pbs__pbs_stage -1 /}
+}
+set cur_attr_val [::legacy::get_attribute pbs__pbs_staged_flow /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare default [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet pbs__pbs_staged_flow default /}
+}
+set cur_attr_val [::legacy::get_attribute enc_preload_script /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare no_value [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet enc_preload_script no_value /}
+}
+set cur_attr_val [::legacy::get_attribute invs_preload_script /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare no_value [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet invs_preload_script no_value /}
+}
+set cur_attr_val [::legacy::get_attribute enc_postload_script /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare no_value [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet enc_postload_script no_value /}
+}
+set cur_attr_val [::legacy::get_attribute invs_postload_script /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare no_value [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet invs_postload_script no_value /}
+}
+set cur_attr_val [::legacy::get_attribute invs_post_plan_design_script /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare no_value [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet invs_post_plan_design_script no_value /}
+}
+set cur_attr_val [::legacy::get_attribute enc_preexport_script /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare no_value [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet enc_preexport_script no_value /}
+}
+set cur_attr_val [::legacy::get_attribute invs_preexport_script /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare no_value [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet invs_preexport_script no_value /}
+}
+set cur_attr_val [::legacy::get_attribute enc_save_db /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet enc_save_db false /}
+}
+set cur_attr_val [::legacy::get_attribute invs_save_db /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet invs_save_db false /}
+}
+set cur_attr_val [::legacy::get_attribute enc_enable_useful_skew /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare true [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet enc_enable_useful_skew true /}
+}
+set cur_attr_val [::legacy::get_attribute invs_enable_useful_skew /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare true [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet invs_enable_useful_skew true /}
+}
+set cur_attr_val [::legacy::get_attribute invs_opt_leakage /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet invs_opt_leakage false /}
+}
+set cur_attr_val [::legacy::get_attribute invs_opt_leakage_options /]
+if {(0 || [llength [split $cur_attr_val]]) && [string compare {} [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet invs_opt_leakage_options {} /}
+}
+set cur_attr_val [::legacy::get_attribute ilm_hdls /]
+if {(0 || [llength [split $cur_attr_val]]) && [string compare {} [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet ilm_hdls {} /}
+}
+set cur_attr_val [::legacy::get_attribute c2c_hier_instances /]
+if {(0 || [llength [split $cur_attr_val]]) && [string compare {} [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet c2c_hier_instances {} /}
+}
+set cur_attr_val [::legacy::get_attribute cpr__flag_cpr__whole_design /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet cpr__flag_cpr__whole_design 0 /}
+}
+set cur_attr_val [::legacy::get_attribute phys_st_enable_cpr /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet phys_st_enable_cpr false /}
+}
+set cur_attr_val [::legacy::get_attribute lef_power_ground_pin_override /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 1 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet lef_power_ground_pin_override 1 /}
+}
+set cur_attr_val [::legacy::get_attribute disable_power_ground_pin_support /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet disable_power_ground_pin_support 0 /}
+}
+set cur_attr_val [::legacy::get_attribute plc_cpr_crit_nets /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 800 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet plc_cpr_crit_nets 800 /}
+}
+set cur_attr_val [::legacy::get_attribute phys_update_preload_script /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare no_value [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet phys_update_preload_script no_value /}
+}
+set cur_attr_val [::legacy::get_attribute phys_update_preannotation_script /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare no_value [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet phys_update_preannotation_script no_value /}
+}
+set cur_attr_val [::legacy::get_attribute phys_post_piopt_script /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare no_value [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet phys_post_piopt_script no_value /}
+}
+set cur_attr_val [::legacy::get_attribute phys_annotate_ndr_nets /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare true [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet phys_annotate_ndr_nets true /}
+}
+set cur_attr_val [::legacy::get_attribute edi_correlation_eco_mode /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet edi_correlation_eco_mode false /}
+}
+set cur_attr_val [::legacy::get_attribute phys_keep_generic_flop_placement /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare true [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet phys_keep_generic_flop_placement true /}
+}
+set cur_attr_val [::legacy::get_attribute phys_use_read_script /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet phys_use_read_script false /}
+}
+set cur_attr_val [::legacy::get_attribute iopt_snapshot_dir /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare no_value [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet iopt_snapshot_dir no_value /}
+}
+set cur_attr_val [::legacy::get_attribute iopt_index_snapshot_dir /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet iopt_index_snapshot_dir 0 /}
+}
+set cur_attr_val [::legacy::get_attribute iopt_useful_skew_enable /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet iopt_useful_skew_enable false /}
+}
+set cur_attr_val [::legacy::get_attribute iopt_useful_skew_min_latency /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet iopt_useful_skew_min_latency 0 /}
+}
+set cur_attr_val [::legacy::get_attribute iopt_useful_skew_max_latency /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare inf [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet iopt_useful_skew_max_latency inf /}
+}
+set cur_attr_val [::legacy::get_attribute iopt_useful_skew_max_skewpoints /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare inf [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet iopt_useful_skew_max_skewpoints inf /}
+}
+set cur_attr_val [::legacy::get_attribute iopt_useful_skew_macro_only /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet iopt_useful_skew_macro_only false /}
+}
+set cur_attr_val [::legacy::get_attribute avoid_library_domain /]
+if {(0 || [llength [split $cur_attr_val]]) && [string compare {} [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet avoid_library_domain {} /}
+}
+set cur_attr_val [::legacy::get_attribute avoid_library_domain_count /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet avoid_library_domain_count 0 /}
+}
+set cur_attr_val [::legacy::get_attribute cpr__flag_cpr__beginning_big_loop /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 1 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet cpr__flag_cpr__beginning_big_loop 1 /}
+}
+set cur_attr_val [::legacy::get_attribute ple_max_cap_per_unit_len /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 1.0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet ple_max_cap_per_unit_len 1.0 /}
+}
+set cur_attr_val [::legacy::get_attribute ple_max_res_per_unit_len /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 250.0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet ple_max_res_per_unit_len 250.0 /}
+}
+set cur_attr_val [::legacy::get_attribute ple_max_area_per_unit_len /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 2.0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet ple_max_area_per_unit_len 2.0 /}
+}
+set cur_attr_val [::legacy::get_attribute cpf_synth__debug /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet cpf_synth__debug 0 /}
+}
+set cur_attr_val [::legacy::get_attribute cpf_synth__preview /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet cpf_synth__preview 0 /}
+}
+set cur_attr_val [::legacy::get_attribute cpf_synth__timing_models_are_boundaries /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 1 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet cpf_synth__timing_models_are_boundaries 1 /}
+}
+set cur_attr_val [::legacy::get_attribute cpf_synth__preserve_as_user /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 1 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet cpf_synth__preserve_as_user 1 /}
+}
+set cur_attr_val [::legacy::get_attribute cpf_synth__ignore_buf_inv_tree_polarity /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 1 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet cpf_synth__ignore_buf_inv_tree_polarity 1 /}
+}
+set cur_attr_val [::legacy::get_attribute cpf_synth__do_collect_buffer_trees /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 1 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet cpf_synth__do_collect_buffer_trees 1 /}
+}
+set cur_attr_val [::legacy::get_attribute cpf_synth__local_loads_threshold /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 2 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet cpf_synth__local_loads_threshold 2 /}
+}
+set cur_attr_val [::legacy::get_attribute cpf_synth__leaf_loads_threshold /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 10 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet cpf_synth__leaf_loads_threshold 10 /}
+}
+set cur_attr_val [::legacy::get_attribute cpf_synth__consider_constant_drivers /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 1 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet cpf_synth__consider_constant_drivers 1 /}
+}
+set cur_attr_val [::legacy::get_attribute cpf_iso__honorDesignIsoRule /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 4 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet cpf_iso__honorDesignIsoRule 4 /}
+}
+set cur_attr_val [::legacy::get_attribute db_compatibility_for_non_seq_setup_arcs /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet db_compatibility_for_non_seq_setup_arcs 0 /}
+}
+set cur_attr_val [::legacy::get_attribute derive_bussed_pins /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet derive_bussed_pins false /}
+}
+set cur_attr_val [::legacy::get_attribute stats_db__suppress /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet stats_db__suppress 0 /}
+}
+set cur_attr_val [::legacy::get_attribute tinfo_tstamp_file /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare .rs_lu1622pe-s.tstamp [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet tinfo_tstamp_file .rs_lu1622pe-s.tstamp /}
+}
+set cur_attr_val [::legacy::get_attribute metric_page_cfg /]
+if {(0 || [llength [split $cur_attr_val]]) && [string compare {} [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet metric_page_cfg {} /}
+}
+set cur_attr_val [::legacy::get_attribute _gui_stop /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet _gui_stop 0 /}
+}
+set cur_attr_val [::legacy::get_attribute gui_include_derived_blockage /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet gui_include_derived_blockage 0 /}
+}
+set cur_attr_val [::legacy::get_attribute gui_include_macro_blockage /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet gui_include_macro_blockage 0 /}
+}
+set cur_attr_val [::legacy::get_attribute gui_pgrid_control /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 0 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet gui_pgrid_control 0 /}
+}
+set cur_attr_val [::legacy::get_attribute startup_done /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare true [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet startup_done true /}
+}
+set cur_attr_val [::legacy::get_attribute post_option /]
+if {(0 || [llength [split $cur_attr_val]]) && [string compare {} [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet post_option {} /}
+}
+set cur_attr_val [::legacy::get_attribute db_option /]
+if {(0 || [llength [split $cur_attr_val]]) && [string compare {} [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet db_option {} /}
+}
+set cur_attr_val [::legacy::get_attribute db_script_option /]
+if {(0 || [llength [split $cur_attr_val]]) && [string compare {} [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet db_script_option {} /}
+}
+set cur_attr_val [::legacy::get_attribute verbose_option /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet verbose_option false /}
+}
+set cur_attr_val [::legacy::get_attribute print_error_info /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet print_error_info false /}
+}
+set cur_attr_val [::legacy::get_attribute gui_auto_update /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare true [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet gui_auto_update true /}
+}
+set cur_attr_val [::legacy::get_attribute script_search_path /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare .//scripts [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet script_search_path .//scripts /}
+}
+set cur_attr_val [::legacy::get_attribute syn_generic_effort /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare high [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet syn_generic_effort high /}
+}
+set cur_attr_val [::legacy::get_attribute syn_map_effort /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare high [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet syn_map_effort high /}
+}
+set cur_attr_val [::legacy::get_attribute syn_opt_effort /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare high [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet syn_opt_effort high /}
+}
+set cur_attr_val [::legacy::get_attribute dont_set_region_leaf /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet dont_set_region_leaf false /}
+}
+set cur_attr_val [::legacy::get_attribute max_cpus_per_server_int /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 8 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet max_cpus_per_server_int 8 /}
+}
+set cur_attr_val [::legacy::get_attribute shm_id_rc /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 1146964 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet shm_id_rc 1146964 /}
+}
+set cur_attr_val [::legacy::get_attribute ui_respects_preserve /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare true [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet ui_respects_preserve true /}
+}
+set cur_attr_val [::legacy::get_attribute sigint_happened /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet sigint_happened false /}
+}
+set cur_attr_val [::legacy::get_attribute prune_iod_level /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 2 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet prune_iod_level 2 /}
+}
+set cur_attr_val [::legacy::get_attribute partition_based_synthesis_eng /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet partition_based_synthesis_eng false /}
+}
+set cur_attr_val [::legacy::get_attribute ovf_mode /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare false [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet ovf_mode false /}
+}
+set cur_attr_val [::legacy::get_attribute st_master_tmp_directory /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare /h/d5/u/lu1622pe-s/etin35_project/synthesis/.st_launch_almansur.fransg.eit.lth.se_27279 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet st_master_tmp_directory /h/d5/u/lu1622pe-s/etin35_project/synthesis/.st_launch_almansur.fransg.eit.lth.se_27279 /}
+}
+set cur_attr_val [::legacy::get_attribute dft_clear_cache_string_to_pin /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 1 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet dft_clear_cache_string_to_pin 1 /}
+}
+set cur_attr_val [::legacy::get_attribute st_floorplan_db /]
+if {(0 || [llength [split $cur_attr_val]]) && [string compare {} [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet st_floorplan_db {} /}
+}
+set cur_attr_val [::legacy::get_attribute pbs_generic /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare true [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet pbs_generic true /}
+}
+set cur_attr_val [::legacy::get_attribute case_handle_real_constants_too /]
+if {(1 || [llength [split $cur_attr_val]]) && [string compare 1 [list $cur_attr_val]]} {
+catch {::legacy::set_attribute -quiet case_handle_real_constants_too 1 /}
+}
+if { "1.0"  ne "[::legacy::get_attr scale_of_cap_per_unit_length /]"} {
+::legacy::set_attribute -quiet scale_of_cap_per_unit_length 1.0 /
+}
+if { "1.0"  ne "[::legacy::get_attr scale_of_res_per_unit_length /]"} {
+::legacy::set_attribute -quiet scale_of_res_per_unit_length 1.0 /
+}
+if { "1.0"  ne "[::legacy::get_attr scale_of_area_per_unit_length /]"} {
+::legacy::set_attribute -quiet scale_of_area_per_unit_length 1.0 /
+}
+if { "1.9000 2.0000"  ne "[::legacy::get_attr ple_correlation_factors /]"} {
+::legacy::set_attribute -quiet ple_correlation_factors {1.9000 2.0000} /
+}
+if { "1.0"  ne "[::legacy::get_attr net_derating_factor_late_data /]"} {
+::legacy::set_attribute -quiet net_derating_factor_late_data 1.0 /
+}
+if { "1.0"  ne "[::legacy::get_attr net_derating_factor_early_data /]"} {
+::legacy::set_attribute -quiet net_derating_factor_early_data 1.0 /
+}
+if { "1.0"  ne "[::legacy::get_attr net_derating_factor_late_clock /]"} {
+::legacy::set_attribute -quiet net_derating_factor_late_clock 1.0 /
+}
+if { "1.0"  ne "[::legacy::get_attr net_derating_factor_early_clock /]"} {
+::legacy::set_attribute -quiet net_derating_factor_early_clock 1.0 /
+}
+if { "100"  ne "[::legacy::get_attr max_virtual_pins_for_each_port /]"} {
+::legacy::set_attribute -quiet max_virtual_pins_for_each_port 100 /
+}
+if { "true"  ne "[::legacy::get_attr lib_lef_consistency_check_enable /]"} {
+::legacy::set_attribute -quiet lib_lef_consistency_check_enable true /
+}
+::legacy::set_attribute -quiet interconnect_mode wireload /
+::legacy::get_attribute active_operating_conditions /
+::legacy::set_attribute -quiet user_function latch_posedge_precontrol {/libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX10/Q}
+::legacy::set_attribute -quiet user_function latch_posedge_precontrol {/libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX14/Q}
+::legacy::set_attribute -quiet user_function latch_posedge_precontrol {/libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX17/Q}
+::legacy::set_attribute -quiet user_function latch_posedge_precontrol {/libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX21/Q}
+::legacy::set_attribute -quiet user_function latch_posedge_precontrol {/libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX24/Q}
+::legacy::set_attribute -quiet user_function latch_posedge_precontrol {/libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX27/Q}
+::legacy::set_attribute -quiet user_function latch_posedge_precontrol {/libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX31/Q}
+::legacy::set_attribute -quiet user_function latch_posedge_precontrol {/libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX34/Q}
+::legacy::set_attribute -quiet user_function latch_posedge_precontrol {/libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX38/Q}
+::legacy::set_attribute -quiet user_function latch_posedge_precontrol {/libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX41/Q}
+::legacy::set_attribute -quiet user_function latch_posedge_precontrol {/libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX52/Q}
+::legacy::set_attribute -quiet user_function latch_posedge_precontrol {/libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX62/Q}
+::legacy::set_attribute -quiet user_function latch_posedge_precontrol {/libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX7/Q}
+::legacy::set_attribute -quiet user_function latch_posedge_precontrol {/libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX82/Q}
+::legacy::set_attribute -quiet dp_tmd_downsizing 1 /
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX10/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX14/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX17/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX21/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX24/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX27/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX31/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX34/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX38/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX41/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX52/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX62/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX7/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX82/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX10/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX14/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX17/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX21/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX24/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX27/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX31/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX34/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX38/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX41/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX52/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX62/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX7/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX82/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX10/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX14/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX17/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX21/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX24/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX27/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX31/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX34/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX38/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX41/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX52/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX62/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX7/Q}
+catch {::legacy::set_attribute -quiet user_function latch_posedge_precontrol /libraries/CLOCK65LPLVT/libcells/HS65_LLP_CNHLSX82/Q}
+set lib_load_end [::legacy::get_attribute runtime /]
+set ::rc_st::bg::runtime_offset [expr {$lib_load_end - $lib_load_start}]
+::rc_st::__eval_from_socket_terminator

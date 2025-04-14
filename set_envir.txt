@@ -1,0 +1,2 @@
+source setup2022.efd
+cd pulpino/sw/build

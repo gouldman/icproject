@@ -1,0 +1,179 @@
+getIoFlowFlag
+setIoFlowFlag 0
+floorPlan -site CORE -s 305.0 300.0 20.0 20.0 20.0 20.0
+uiSetTool select
+getIoFlowFlag
+fit
+
+selectInst top_inst/u_RAM/u_sram_wrapper
+uiSetTool ruler
+uiSetTool move
+setObjFPlanBox Instance top_inst/u_RAM/u_sram_wrapper 95.758 97.11 400.558 138.11
+setObjFPlanBox Instance top_inst/u_RAM/u_sram_wrapper 95.975 96.249 400.775 137.249
+setObjFPlanBox Instance top_inst/u_RAM/u_sram_wrapper 95.741 96.25 400.541 137.25
+pan 114.231 -1.244
+pan -96.799 0.431
+setObjFPlanBox Instance top_inst/u_RAM/u_sram_wrapper 95.525 95.82 400.325 136.82
+
+from here!!!!!!!!!
+
+getIoFlowFlag
+placeInstance top_inst/u_RAM/u_sram_wrapper 95.525 95.82 R180
+uiSetTool select
+
+addHaloToBlock {10 10 10 10} -allBlock
+addHaloToBlock {10 10 10 10} -allBlock
+setDrawView fplan
+
+deselectAll
+selectInst top_inst/u_RAM/u_sram_wrapper
+uiSetTool move
+cutRow -selected
+uiSetTool select
+
+clearGlobalNets
+globalNetConnect VDD -type pgpin -pin vdd -inst *
+globalNetConnect VDD -type pgpin -pin VDDC -inst *
+globalNetConnect VDD -type tiehi -inst *
+globalNetConnect GND -type tielo -inst *
+globalNetConnect GND -type pgpin -pin GNDC -inst *
+globalNetConnect GND -type pgpin -pin gnd -inst *
+
+set sprCreateIeRingNets {}
+set sprCreateIeRingLayers {}
+set sprCreateIeRingWidth 1.0
+set sprCreateIeRingSpacing 1.0
+set sprCreateIeRingOffset 1.0
+set sprCreateIeRingThreshold 1.0
+set sprCreateIeRingJogDistance 1.0
+addRing -skip_via_on_wire_shape Noshape -skip_via_on_pin Standardcell -stacked_via_top_layer AP -type core_rings -jog_distance 0.4 -threshold 0.4 -nets {GND VDD} -follow core -stacked_via_bottom_layer M1 -layer {bottom M3 top M3 right M4 left M4} -width 2 -spacing 2 -offset 2
+editPushUndo
+deselectAll
+selectInst top_inst/u_RAM/u_sram_wrapper
+uiSetTool move
+addRing -skip_via_on_wire_shape Noshape -skip_via_on_pin Standardcell -stacked_via_top_layer AP -around selected -jog_distance 0.4 -threshold 0.4 -type block_rings -nets {GND VDD} -follow core -stacked_via_bottom_layer M1 -layer {bottom M3 top M3 right M4 left M4} -width 2 -spacing 2 -offset 2 -skip_side {left bottom}
+editPushUndo
+addRing -skip_via_on_wire_shape Noshape -skip_via_on_pin Standardcell -stacked_via_top_layer AP -around selected -jog_distance 0.4 -threshold 0.4 -type block_rings -nets {GND VDD} -follow core -stacked_via_bottom_layer M1 -layer {bottom M3 top M3 right M4 left M4} -width 2 -spacing 2 -offset 2 -skip_side {left bottom}
+
+
+set sprCreateIeStripeNets {}
+set sprCreateIeStripeLayers {}
+set sprCreateIeStripeWidth 10.0
+set sprCreateIeStripeSpacing 2.0
+set sprCreateIeStripeThreshold 1.0
+addStripe -skip_via_on_wire_shape Noshape -block_ring_top_layer_limit M1 -max_same_layer_jog_length 6 -padcore_ring_bottom_layer_limit M1 -set_to_set_distance 100 -skip_via_on_pin Standardcell -stacked_via_top_layer AP -padcore_ring_top_layer_limit M1 -spacing 2 -merge_stripes_value 2.5 -layer M4 -block_ring_bottom_layer_limit M1 -stop_x 0 -stop_y 0 -width 2 -area {} -nets {GND VDD} -start_x 0 -stacked_via_bottom_layer M1 -start_y 0
+editPushUndo
+addStripe -skip_via_on_wire_shape Noshape -block_ring_top_layer_limit M1 -max_same_layer_jog_length 6 -padcore_ring_bottom_layer_limit M1 -set_to_set_distance 100 -skip_via_on_pin Standardcell -stacked_via_top_layer AP -padcore_ring_top_layer_limit M1 -spacing 2 -merge_stripes_value 2.5 -direction horizontal -layer M3 -block_ring_bottom_layer_limit M1 -stop_x 0 -stop_y 0 -width 2 -area {} -nets {GND VDD} -start_x 0 -stacked_via_bottom_layer M1 -start_y 0
+editPushUndo
+addStripe -skip_via_on_wire_shape Noshape -block_ring_top_layer_limit M1 -max_same_layer_jog_length 6 -padcore_ring_bottom_layer_limit M1 -set_to_set_distance 100 -skip_via_on_pin Standardcell -stacked_via_top_layer AP -padcore_ring_top_layer_limit M1 -spacing 2 -merge_stripes_value 2.5 -direction horizontal -layer M3 -block_ring_bottom_layer_limit M1 -stop_x 0 -stop_y 0 -width 2 -area {} -nets {GND VDD} -start_x 0 -stacked_via_bottom_layer M1 -start_y 0
+
+addWellTap -cell HS65_LH_FILLERNPWPFP4 -cellInterval 25 -prefix WELLTAP
+addWellTap -cell HS65_LH_FILLERNPWPFP4 -cellInterval 25 -prefix WELLTAP
+
+setPlaceMode -prerouteAsObs {1 2 3 4 5 6 7 8}
+setPlaceMode -fp false
+placeDesign
+setDrawView place
+setLayerPreference net -isVisible 0
+
+set_ccopt_property inverter_cells { HS65_LL_CNIVX10 HS65_LL_CNIVX103 HS65_LL_CNIVX124
+HS65_LL_CNIVX14 HS65_LL_CNIVX17 HS65_LL_CNIVX21 HS65_LL_CNIVX24 HS65_LL_CNIVX27
+HS65_LL_CNIVX3 HS65_LL_CNIVX31 HS65_LL_CNIVX34 HS65_LL_CNIVX38 HS65_LL_CNIVX41
+HS65_LL_CNIVX45 HS65_LL_CNIVX48 HS65_LL_CNIVX52 HS65_LL_CNIVX55 HS65_LL_CNIVX58
+HS65_LL_CNIVX62 HS65_LL_CNIVX7 HS65_LL_CNIVX82}
+set_ccopt_property buffer_cells {HS65_LL_CNBFX10 HS65_LL_CNBFX103 HS65_LL_CNBFX124
+HS65_LL_CNBFX14 HS65_LL_CNBFX17 HS65_LL_CNBFX21 HS65_LL_CNBFX24
+HS65_LL_CNBFX27 HS65_LL_CNBFX31 HS65_LL_CNBFX34 HS65_LL_CNBFX38
+HS65_LL_CNBFX38_0 HS65_LL_CNBFX38_1 HS65_LL_CNBFX38_10 HS65_LL_CNBFX38_11
+HS65_LL_CNBFX38_12 HS65_LL_CNBFX38_13 HS65_LL_CNBFX38_14 HS65_LL_CNBFX38_15
+HS65_LL_CNBFX38_16 HS65_LL_CNBFX38_17 HS65_LL_CNBFX38_18
+HS65_LL_CNBFX38_19 HS65_LL_CNBFX38_2 HS65_LL_CNBFX38_20 HS65_LL_CNBFX38_21
+HS65_LL_CNBFX38_22 HS65_LL_CNBFX38_23 HS65_LL_CNBFX38_3 HS65_LL_CNBFX38_4
+HS65_LL_CNBFX38_5 HS65_LL_CNBFX38_6 HS65_LL_CNBFX38_7 HS65_LL_CNBFX38_8
+HS65_LL_CNBFX38_9 HS65_LL_CNBFX41 HS65_LL_CNBFX45 HS65_LL_CNBFX48
+HS65_LL_CNBFX52 HS65_LL_CNBFX55 HS65_LL_CNBFX58 HS65_LL_CNBFX62 HS65_LL_CNBFX82 }
+create_ccopt_clock_tree_spec -file ./ccopt.spec
+ccopt_check_and_flatten_ilms_no_restore
+create_ccopt_clock_tree -name in_clk -source in_clk -no_skew_group
+set_ccopt_property target_max_trans_sdc -delay_corner SS -late -clock_tree in_clk 0.200
+set_ccopt_property source_latency -delay_corner SS -late -rise -clock_tree in_clk 0.500
+set_ccopt_property source_latency -delay_corner SS -late -fall -clock_tree in_clk 0.500
+set_ccopt_property source_latency -delay_corner FF -late -rise -clock_tree in_clk 0.500
+set_ccopt_property source_latency -delay_corner FF -late -fall -clock_tree in_clk 0.500
+set_ccopt_property clock_period -pin in_clk 10
+create_ccopt_skew_group -name in_clk/Clock_constraint -sources in_clk -auto_sinks
+set_ccopt_property include_source_latency -skew_group in_clk/Clock_constraint true
+set_ccopt_property extracted_from_clock_name -skew_group in_clk/Clock_constraint in_clk
+set_ccopt_property extracted_from_constraint_mode_name -skew_group in_clk/Clock_constraint Clock_constraint
+set_ccopt_property extracted_from_delay_corners -skew_group in_clk/Clock_constraint {SS FF}
+check_ccopt_clock_tree_convergence
+get_ccopt_property auto_design_state_for_ilms
+ccopt_design
+
+timeDesign -postCTS
+timeDesign -postCTS -hold
+
+setOptMode -reset
+setOptMode -holdFixingCells { HS65_LL_BFX106 HS65_LL_BFX13 HS65_LL_BFX142 HS65_LL_BFX18 HS65_LL_BFX2 HS65_LL_BFX213 HS65_LL_BFX22 HS65_LL_BFX27 HS65_LL_BFX284 HS65_LL_BFX31 HS65_LL_BFX35 HS65_LL_BFX4 HS65_LL_BFX40 HS65_LL_BFX44 HS65_LL_BFX49 HS65_LL_BFX53 HS65_LL_BFX62 HS65_LL_BFX7 HS65_LL_BFX71 HS65_LL_BFX9 HS65_LL_BFX106 HS65_LL_BFX13 HS65_LL_BFX142 HS65_LL_BFX18 HS65_LL_BFX2 HS65_LL_BFX213 HS65_LL_BFX22 HS65_LL_BFX27 HS65_LL_BFX284 HS65_LL_BFX31 HS65_LL_BFX35 HS65_LL_BFX4 HS65_LL_BFX40 HS65_LL_BFX44 HS65_LL_BFX49 HS65_LL_BFX53 HS65_LL_BFX62 HS65_LL_BFX7 HS65_LL_BFX71 HS65_LL_BFX9 HS65_LL_BFX106 HS65_LL_BFX13 HS65_LL_BFX142 HS65_LL_BFX18 HS65_LL_BFX2 HS65_LL_BFX213 HS65_LL_BFX22 HS65_LL_BFX27 HS65_LL_BFX284 HS65_LL_BFX31 HS65_LL_BFX35 HS65_LL_BFX4 HS65_LL_BFX40 HS65_LL_BFX44 HS65_LL_BFX49 HS65_LL_BFX53 HS65_LL_BFX62 HS65_LL_BFX7 HS65_LL_BFX71 HS65_LL_BFX9 HS65_LL_BFX106 HS65_LL_BFX13 HS65_LL_BFX142 HS65_LL_BFX18 HS65_LL_BFX2 HS65_LL_BFX213 HS65_LL_BFX22 HS65_LL_BFX27 HS65_LL_BFX284 HS65_LL_BFX31 HS65_LL_BFX35 HS65_LL_BFX4 HS65_LL_BFX40 HS65_LL_BFX44 HS65_LL_BFX49 HS65_LL_BFX53 HS65_LL_BFX62 HS65_LL_BFX7 HS65_LL_BFX71 HS65_LL_BFX9  }
+getOptMode -holdFixingCells
+optDesign -postCTS -incr
+optDesign -postCTS -hold
+
+!!!!!!这里要查看terminal的报告有无违例,反复运行optDesign -postCTS -hold！！！！
+
+report_ccopt_clock_trees -filename ./clkreport/clktree_ccopt.rpt
+report_ccopt_skew_groups -filename ./clkreport/skewgrp_ccopt.rpt
+report_ccopt_worst_chain -filename ./clkreport/worstChain_ccopt.rpt
+
+uiSetTool select
+gui_select -rect {-23.209 591.271 627.008 483.449}
+spaceIoInst -fixSide left -space 37
+pan 23.204 50.275
+pan 40.993 78.120
+gui_select -rect {-51.724 479.336 82.951 -77.562}
+spaceIoInst -fixSide bottom -space 16
+deselectAll
+gui_select -rect {78.401 78.042 763.604 -15.684}
+spaceIoInst -fixSide right -space 51
+pan -435.233 -32.873
+pan 51.281 -70.348
+gui_select -rect {623.778 579.900 801.947 81.552}
+spaceIoInst -fixSide top -space 16
+pan 202.298 74.325
+pan 32.486 6.961
+
+
+addIoFiller -cell PADSPACE_74x1u PADSPACE_74x2u PADSPACE_74x4u PADSPACE_74x8u PADSPACE_74x16u -prefix IO_FILLE -side n -row 1
+setDrawView place
+addIoFiller -cell PADSPACE_74x1u PADSPACE_74x2u PADSPACE_74x4u PADSPACE_74x8u PADSPACE_74x16u -prefix IO_FILLE -side s -row 1
+addIoFiller -cell PADSPACE_74x1u PADSPACE_74x2u PADSPACE_74x4u PADSPACE_74x8u PADSPACE_74x16u -prefix IO_FILLE -side w -row 1
+addIoFiller -cell PADSPACE_74x1u PADSPACE_74x2u PADSPACE_74x4u PADSPACE_74x8u PADSPACE_74x16u -prefix IO_FILLE -side e -row 1
+deselectAll
+setDrawView place
+
+sroute -connect { blockPin padPin corePin floatingStripe } -layerChangeRange { M1(1) AP(8) } -blockPinTarget { nearestTarget } -padPinPortConnect { allPort oneGeom } -padPinTarget { nearestTarget } -corePinTarget { firstAfterRowEnd } -floatingStripeTarget { blockring padring ring stripe ringpin blockpin followpin } -allowJogging 1 -crossoverViaLayerRange { M1(1) AP(8) } -nets { GND VDD } -allowLayerChange 1 -blockPin useLef -targetViaLayerRange { M1(1) AP(8) }
+setNanoRouteMode -quiet -timingEngine {}
+setNanoRouteMode -quiet -routeWithSiPostRouteFix 0
+setNanoRouteMode -quiet -drouteStartIteration default
+setNanoRouteMode -quiet -routeTopRoutingLayer default
+setNanoRouteMode -quiet -routeBottomRoutingLayer default
+setNanoRouteMode -quiet -drouteEndIteration default
+setNanoRouteMode -quiet -routeWithTimingDriven false
+setNanoRouteMode -quiet -routeWithSiDriven false
+routeDesign -globalDetail
+
+redirect -quiet {set honorDomain [getAnalysisMode -honorClockDomains]} > /dev/null
+timeDesign -postRoute -pathReports -drvReports -slackReports -numPaths 50 -prefix top_top_postRoute -outDir timingReports
+setAnalysisMode -analysisType onChipVariation
+setAnalysisMode -analysisType onChipVariation -cppr both
+
+
+
+
+
+
+
+
+
+
+
