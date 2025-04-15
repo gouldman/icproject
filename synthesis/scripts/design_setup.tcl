@@ -74,6 +74,7 @@ set DESIGN_FILES_SV { \
 	adbg_axi_biu.sv adbg_axi_module.sv adbg_axionly_top.sv adbg_lint_biu.sv \
 	adbg_lint_module.sv adbg_lintonly_top.sv adbg_or1k_biu.sv \
 	adbg_or1k_module.sv adbg_or1k_status_reg.sv adbg_top.sv adv_dbg_if.sv \
+    apb_gpio.sv \
 	riscv_defines.sv apu_core_package.sv \
 	riscv_alu_basic.sv riscv_alu_div.sv riscv_alu.sv \
 	riscv_apu_disp.sv riscv_compressed_decoder.sv \
