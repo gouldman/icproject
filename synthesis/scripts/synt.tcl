@@ -11,6 +11,8 @@ if {![file exists ${SYNT_REPORT}]}     { file mkdir ${SYNT_REPORT}}
 puts "\n\n\n DESIGN FILES \n\n\n"
 source $SYNT_SCRIPT/design_setup.tcl
 
+set_attribute hdl_error_on_blackbox true /
+
 puts "\n\n\n ANALYZE HDL DESIGN \n\n\n"
 read_hdl -sv ${DESIGN_FILES_SV} 
 read_hdl -vhdl ${DESIGN_FILES_VHDL}
