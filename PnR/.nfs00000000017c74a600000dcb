@@ -1,0 +1,102 @@
+#######################################################
+#                                                     
+#  Innovus Command Logging File                     
+#  Created on Sat Apr 19 11:56:16 2025                
+#                                                     
+#######################################################
+
+#@(#)CDS: Innovus v16.13-s045_1 (64bit) 10/03/2016 04:28 (Linux 2.6.18-194.el5)
+#@(#)CDS: NanoRoute 16.13-s045_1 NR160923-1039/16_13-UB (database version 2.30, 351.6.1) {superthreading v1.30}
+#@(#)CDS: AAE 16.13-s013 (64bit) 10/03/2016 (Linux 2.6.18-194.el5)
+#@(#)CDS: CTE 16.13-s013_1 () Sep 28 2016 05:49:12 ( )
+#@(#)CDS: SYNTECH 16.13-s008_1 () Sep 15 2016 11:59:01 ( )
+#@(#)CDS: CPE v16.13-s039
+#@(#)CDS: IQRC/TQRC 15.2.5-s542 (64bit) Thu Aug 25 18:41:43 PDT 2016 (Linux 2.6.18-194.el5)
+
+set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+suppressMessage ENCEXT-2799
+getDrawView
+loadWorkspace -name Physical
+win
+encMessage warning 0
+encMessage debug 0
+encMessage info 0
+restoreDesign /h/d5/u/lu1622pe-s/etin35_project/PnR/first_version_PnR.dat top_top
+setDrawView fplan
+encMessage warning 1
+encMessage debug 0
+encMessage info 1
+setDrawView place
+selectInst top_inst_core_region_i/instr_mem/sp_ram_wrap_i_sp_ram_i_four_sram_wrapper0/sram_inst2
+deselectAll
+selectInst top_inst_core_region_i/data_mem/sp_ram_i_four_sram_wrapper1/sram_inst0
+fit
+deselectAll
+selectInst top_inst_core_region_i/instr_mem/sp_ram_wrap_i_sp_ram_i_four_sram_wrapper3/sram_inst3
+deselectAll
+selectInst top_inst_core_region_i/instr_mem/sp_ram_wrap_i_sp_ram_i_four_sram_wrapper3/sram_inst2
+deselectAll
+selectInst top_inst_core_region_i/instr_mem/sp_ram_wrap_i_sp_ram_i_four_sram_wrapper3/sram_inst1
+deselectAll
+timeDesign -postCTS -hold
+setOptMode -reset
+setOptMode -holdFixingCells { HS65_LL_BFX106 HS65_LL_BFX13 HS65_LL_BFX142 HS65_LL_BFX18 HS65_LL_BFX2 HS65_LL_BFX213 HS65_LL_BFX22 HS65_LL_BFX27 HS65_LL_BFX284 HS65_LL_BFX31 HS65_LL_BFX35 HS65_LL_BFX4 HS65_LL_BFX40 HS65_LL_BFX44 HS65_LL_BFX49 HS65_LL_BFX53 HS65_LL_BFX62 HS65_LL_BFX7 HS65_LL_BFX71 HS65_LL_BFX9 HS65_LL_BFX106 HS65_LL_BFX13 HS65_LL_BFX142 HS65_LL_BFX18 HS65_LL_BFX2 HS65_LL_BFX213 HS65_LL_BFX22 HS65_LL_BFX27 HS65_LL_BFX284 HS65_LL_BFX31 HS65_LL_BFX35 HS65_LL_BFX4 HS65_LL_BFX40 HS65_LL_BFX44 HS65_LL_BFX49 HS65_LL_BFX53 HS65_LL_BFX62 HS65_LL_BFX7 HS65_LL_BFX71 HS65_LL_BFX9 HS65_LL_BFX106 HS65_LL_BFX13 HS65_LL_BFX142 HS65_LL_BFX18 HS65_LL_BFX2 HS65_LL_BFX213 HS65_LL_BFX22 HS65_LL_BFX27 HS65_LL_BFX284 HS65_LL_BFX31 HS65_LL_BFX35 HS65_LL_BFX4 HS65_LL_BFX40 HS65_LL_BFX44 HS65_LL_BFX49 HS65_LL_BFX53 HS65_LL_BFX62 HS65_LL_BFX7 HS65_LL_BFX71 HS65_LL_BFX9 HS65_LL_BFX106 HS65_LL_BFX13 HS65_LL_BFX142 HS65_LL_BFX18 HS65_LL_BFX2 HS65_LL_BFX213 HS65_LL_BFX22 HS65_LL_BFX27 HS65_LL_BFX284 HS65_LL_BFX31 HS65_LL_BFX35 HS65_LL_BFX4 HS65_LL_BFX40 HS65_LL_BFX44 HS65_LL_BFX49 HS65_LL_BFX53 HS65_LL_BFX62 HS65_LL_BFX7 HS65_LL_BFX71 HS65_LL_BFX9  }
+getOptMode -holdFixingCells
+optDesign -postCTS -incr
+optDesign -postCTS -hold
+selectInst top_inst_core_region_i/instr_mem/sp_ram_wrap_i_sp_ram_i_four_sram_wrapper3/sram_inst3
+optDesign -postCTS -hold
+optDesign -postCTS -hold
+optDesign -postCTS -hold
+optDesign -postCTS -hold
+optDesign -postCTS -hold
+fit
+optDesign -postCTS -hold
+optDesign -postCTS -hold
+optDesign -postCTS -hold
+optDesign -postCTS -hold
+setOptMode -fixFanoutLoad true -fixDRC true
+optDesign -postCTS -drv
+timeDesign -postCTS -hold
+optDesign -postCTS -hold
+timeDesign -postCTS -hold
+deselectAll
+fit
+optDesign -postCTS -hold
+timeDesign -postCTS -hold
+optDesign -postCTS -hold
+timeDesign -postCTS -hold
+optDesign -postCTS -hold
+timeDesign -postCTS -hold
+optDesign -postCTS -hold
+timeDesign -postCTS -hold
+optDesign -postCTS -hold
+setOptMode -fixFanoutLoad true -fixDRC true
+optDesign -postCTS -drv
+timeDesign -postCTS -drv
+timeDesign -postCTS -hold
+timeDesign -postCTS
+optDesign -postCTS -hold
+timeDesign -postCTS -hold
+optDesign -postCTS -drv
+timeDesign -postCTS
+timeDesign -postCTS -hold
+optDesign -postCTS -hold
+timeDesign -postCTS -hold
+optDesign -postCTS -hold
+optDesign -postCTS -drv
+timeDesign -postCTS
+optDesign -postCTS -hold
+timeDesign -postCTS -hold
+optDesign -postCTS -drv
+timeDesign -postCTS
+optDesign -postCTS -hold
+timeDesign -postCTS -hold
+optDesign -postCTS -hold
+timeDesign -postCTS -hold
+optDesign -postCTS -hold
+timeDesign -postCTS -hold
+optDesign -postCTS -hold
+saveDesign after_postCTS
+saveDesign after_postCTS
+pan 1745.725 22.238
